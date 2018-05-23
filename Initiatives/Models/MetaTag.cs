@@ -11,6 +11,7 @@ namespace Initiatives.Models
             InitiativeMetaTag = new HashSet<InitiativeMetaTag>();
         }
         public int MetaTagId { get; set; }
+        public bool IsActive { get; set; }
         public string MetaTagShortDescription { get; set; }
         public string MetaTagDescription { get; set; }
         public string ModifiedUserName { get; set; }

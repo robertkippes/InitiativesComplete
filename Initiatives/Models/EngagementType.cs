@@ -12,6 +12,7 @@ namespace Initiatives.Models
         }
 
         public int EngagementTypeId { get; set; }
+        public bool IsActive { get; set; }
         public string EngagementTypeShortDescription { get; set; }
         public string EngagementTypeDescription { get; set; }
         public string ModifiedUserName { get; set; }

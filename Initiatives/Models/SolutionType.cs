@@ -12,6 +12,7 @@ namespace Initiatives.Models
         }
 
         public int SolutionTypeId { get; set; }
+        public bool IsActive { get; set; }
         public string SolutionTypeShortDescription { get; set; }
         public string SolutionTypeDescription { get; set; }
         public string ModifiedUserName { get; set; }

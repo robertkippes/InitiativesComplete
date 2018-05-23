@@ -12,6 +12,7 @@ namespace Initiatives.Models
         }
 
         public int ResourceId { get; set; }
+        public bool IsActive { get; set; }
         [Display(Name = "First Name")]
         [DataType(DataType.Text)]
         public string FirstName { get; set; }

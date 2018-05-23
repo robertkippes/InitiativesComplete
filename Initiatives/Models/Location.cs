@@ -12,6 +12,7 @@ namespace Initiatives.Models
         }
 
         public int LocationId { get; set; }
+        public bool IsActive { get; set; }
         public string LocationShortDescription { get; set; }
         public string LocationDescription { get; set; }
         public string ModifiedUserName { get; set; }

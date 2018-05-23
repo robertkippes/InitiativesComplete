@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Initiatives.Models
 {
-    public partial class InitiativesContext : DbContext
+    public partial class InitiativeContext : DbContext
     {
         public virtual DbSet<Business> Businesses { get; set; }
         public virtual DbSet<Facility> Facility { get; set; }
@@ -23,7 +23,7 @@ namespace Initiatives.Models
         public virtual DbSet<Resource> Resource { get; set; }
         public virtual DbSet<SolutionType> SolutionType { get; set; }
         public virtual DbSet<Note> Note { get; set; }
-        public InitiativesContext(DbContextOptions<InitiativesContext> options)
+        public InitiativeContext(DbContextOptions<InitiativeContext> options)
                 : base(options)
         {
         }
@@ -53,6 +53,8 @@ namespace Initiatives.Models
                 entity.Property(e => e.BusinessDescription)
                     .IsRequired()
                     .HasColumnType("nchar(25)");
+                entity.Property(e => e.IsActive)
+                    .HasColumnType("bit");
             });
 
             modelBuilder.Entity<Facility>(entity =>
@@ -64,6 +66,8 @@ namespace Initiatives.Models
                 entity.Property(e => e.FacilityDescription)
                     .IsRequired()
                     .HasColumnType("nchar(25)");
+                entity.Property(e => e.IsActive)
+                    .HasColumnType("bit");
             });
 
             modelBuilder.Entity<Location>(entity =>
@@ -75,6 +79,8 @@ namespace Initiatives.Models
                 entity.Property(e => e.LocationDescription)
                     .IsRequired()
                     .HasColumnType("nchar(25)");
+                entity.Property(e => e.IsActive)
+                    .HasColumnType("bit");
             });
 
             modelBuilder.Entity<EngagementType>(entity =>
@@ -86,10 +92,14 @@ namespace Initiatives.Models
                 entity.Property(e => e.EngagementTypeDescription)
                     .IsRequired()
                     .HasColumnType("nchar(25)");
+                entity.Property(e => e.IsActive)
+                    .HasColumnType("bit");
             });
 
             modelBuilder.Entity<Initiative>(entity =>
             {
+                entity.Property(e => e.IsActive)
+                    .HasColumnType("bit");
                 entity.Property(e => e.ARBdate)
                     .HasColumnName("ARBDate")
                     .HasColumnType("date");
@@ -114,15 +124,15 @@ namespace Initiatives.Models
                 entity.Property(e => e.UpStreamSystem)
                     .HasColumnType("nchar(25)");
                 // Foreign Keys
-                entity.HasOne(d => d.BusinessNavigation)
-                    .WithMany(p => p.Initiative)
-                    .HasForeignKey(d => d.Business)
-                    .HasConstraintName("FK_Initiative_Business");
+                //entity.HasOne(d => d.BusinessNavigation)
+                //    .WithMany(p => p.Initiative)
+                //    .HasForeignKey(d => d.Business)
+                //    .HasConstraintName("FK_Initiative_Business");
 
-                entity.HasOne(d => d.FacilityNavigation)
-                    .WithMany(p => p.Initiative)
-                    .HasForeignKey(d => d.Facility)
-                    .HasConstraintName("FK_Initiative_Facility");
+                //entity.HasOne(d => d.FacilityNavigation)
+                //    .WithMany(p => p.Initiative)
+                //    .HasForeignKey(d => d.Facility)
+                //    .HasConstraintName("FK_Initiative_Facility");
 
                 entity.HasOne(d => d.LocationNavigation)
                     .WithMany(p => p.Initiative)
@@ -143,6 +153,42 @@ namespace Initiatives.Models
                     .WithMany(p => p.Initiative)
                     .HasForeignKey(d => d.SolutionType)
                     .HasConstraintName("FK_Initiative_SolutionType");
+            });
+
+            modelBuilder.Entity<InitiativeBusiness>(entity =>
+            {
+
+                entity.HasKey(bc => new { bc.InitiativeId, bc.BusinessId });
+
+                entity.HasOne(d => d.Initiative)
+                    .WithMany(p => p.InitiativeBusiness)
+                    .HasForeignKey(d => d.InitiativeId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_InitiativeBusiness_Initiative");
+
+                entity.HasOne(d => d.Business)
+                    .WithMany(p => p.InitiativeBusiness)
+                    .HasForeignKey(d => d.BusinessId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_InitiativeBusiness_Business");
+            });
+
+            modelBuilder.Entity<InitiativeFacility>(entity =>
+            {
+
+                entity.HasKey(bc => new { bc.InitiativeId, bc.FacilityId });
+
+                entity.HasOne(d => d.Initiative)
+                    .WithMany(p => p.InitiativeFacility)
+                    .HasForeignKey(d => d.InitiativeId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_InitiativeFacility_Initiative");
+
+                entity.HasOne(d => d.Facility)
+                    .WithMany(p => p.InitiativeFacility)
+                    .HasForeignKey(d => d.FacilityId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_InitiativeFacility_Facility");
             });
 
             modelBuilder.Entity<InitiativeMetaTag>(entity =>
@@ -174,6 +220,8 @@ namespace Initiatives.Models
                 entity.Property(e => e.MetaTagDescription)
                     .IsRequired()
                     .HasColumnType("nchar(25)");
+                entity.Property(e => e.IsActive)
+                    .HasColumnType("bit");
             });
 
             modelBuilder.Entity<Resource>(entity =>
@@ -185,6 +233,8 @@ namespace Initiatives.Models
                 entity.Property(e => e.LastName)
                     .IsRequired()
                     .HasColumnType("nchar(15)");
+                entity.Property(e => e.IsActive)
+                    .HasColumnType("bit");
             });
 
             modelBuilder.Entity<SolutionType>(entity =>
@@ -196,6 +246,8 @@ namespace Initiatives.Models
                 entity.Property(e => e.SolutionTypeDescription)
                     .IsRequired()
                     .HasColumnType("nchar(25)");
+                entity.Property(e => e.IsActive)
+                    .HasColumnType("bit");
             });
             modelBuilder.Entity<Note>(entity =>
             {
@@ -208,6 +260,8 @@ namespace Initiatives.Models
                     .HasForeignKey<Note>(d => d.NoteId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Note_Initiative");
+                entity.Property(e => e.IsActive)
+                    .HasColumnType("bit");
             });
         }
 

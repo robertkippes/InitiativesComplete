@@ -2,8 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Initiatives.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -21,6 +23,8 @@ namespace Initiatives
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<InitiativeContext>(options =>
+                options.UseSqlServer("Data Source=ADA10614293;Initial Catalog=Initiatives;Integrated Security=True"));
             services.AddMvc();
         }
 
@@ -38,7 +42,7 @@ namespace Initiatives
             }
 
             app.UseStaticFiles();
-
+            app.UseAuthentication();
             app.UseMvc();
         }
     }

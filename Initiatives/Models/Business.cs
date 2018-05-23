@@ -8,16 +8,17 @@ namespace Initiatives.Models
     {
         public Business()
         {
-            Initiative = new HashSet<Initiative>();
+            InitiativeBusiness = new HashSet<InitiativeBusiness>();
         }
 
         public int BusinessId { get; set; }
+        public bool IsActive { get; set; }
         public string BusinessShortDescription { get; set; }
         public string BusinessDescription { get; set; }
         public string ModifiedUserName { get; set; }
         [DataType(DataType.Date)]
         public DateTime LastModifiedDate { get; set; }
 
-        public ICollection<Initiative> Initiative { get; set; }
+        public ICollection<InitiativeBusiness> InitiativeBusiness { get; set; }
     }
 }

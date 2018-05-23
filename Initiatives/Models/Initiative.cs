@@ -66,7 +66,7 @@ namespace Initiatives.Models
         public ICollection<InitiativeBusiness> InitiativeBusiness { get; set; }
         [Display(Name = "Facility")]
         public ICollection<InitiativeFacility> InitiativeFacility { get; set; }
-        [InverseProperty("NoteNavigation")]
+        //[InverseProperty("NoteNavigation")]
         public Note Note { get; set; }
     }
 }

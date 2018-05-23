@@ -8,6 +8,7 @@ namespace Initiatives.Models
     {
         public int NoteId { get; set; }
         public int InitiativeId { get; set; }
+        public bool IsActive { get; set; }
         [Required]
         [Column("Note")]
         public string Note1 { get; set; }
