@@ -63,9 +63,9 @@ namespace Initiatives.Models
         public SolutionType SolutionTypeNavigation { get; set; }
         [Display(Name = "Meta Tags")]
         public ICollection<InitiativeMetaTag> InitiativeMetaTag { get; set; }
-        public ICollection<Business> BusinessNavigation { get; set; }
+        public ICollection<InitiativeBusiness> InitiativeBusiness { get; set; }
         [Display(Name = "Facility")]
-        public ICollection<Facility> FacilityNavigation { get; set; }
+        public ICollection<InitiativeFacility> InitiativeFacility { get; set; }
         [InverseProperty("NoteNavigation")]
         public Note Note { get; set; }
     }
