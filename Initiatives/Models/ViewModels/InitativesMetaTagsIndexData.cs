@@ -5,12 +5,10 @@ using System.Threading.Tasks;
 
 namespace Initiatives.Models.ViewModels
 {
-    public class InitativesIndexData
+    public class InitativesMetaTagsIndexData
     {
-        public IEnumerable<Initiative> Initiative { get; set; }
+        public IEnumerable<Initiative> Initiatives { get; set; }
         public IEnumerable<InitiativeMetaTag> InitiativeMetaTagCollection { get; set; }
-        public IEnumerable<MetaTag> MetaTag { get; set; }
+        public IEnumerable<MetaTag> MetaTags { get; set; }
     }
 }
-//public Initiative Initiative { get; set; }
-//public MetaTag MetaTag { get; set; }

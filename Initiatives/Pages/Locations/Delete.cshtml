@@ -1,0 +1,52 @@
+@page
+@model Initiatives.Pages.Locations.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Location</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Location.LocationShortDescription)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Location.LocationShortDescription)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Location.LocationDescription)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Location.LocationDescription)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Location.ModifiedUserName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Location.ModifiedUserName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Location.LastModifiedDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Location.LastModifiedDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Location.IsActive)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Location.IsActive)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Location.LocationId" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>

@@ -1,0 +1,52 @@
+@page
+@model Initiatives.Pages.Businesses.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Business</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Business.BusinessShortDescription)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Business.BusinessShortDescription)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Business.BusinessDescription)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Business.BusinessDescription)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Business.ModifiedUserName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Business.ModifiedUserName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Business.LastModifiedDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Business.LastModifiedDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Business.IsActive)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Business.IsActive)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Business.BusinessId" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>

@@ -1,0 +1,60 @@
+@page
+@model Initiatives.Pages.EngagementTypes.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.EngagementType[0].EngagementTypeShortDescription)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EngagementType[0].EngagementTypeDescription)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EngagementType[0].ModifiedUserName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EngagementType[0].LastModifiedDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EngagementType[0].IsActive)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.EngagementType) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EngagementTypeShortDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EngagementTypeDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedUserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastModifiedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.EngagementTypeId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.EngagementTypeId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.EngagementTypeId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

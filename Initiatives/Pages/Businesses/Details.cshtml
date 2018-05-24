@@ -1,0 +1,49 @@
+@page
+@model Initiatives.Pages.Businesses.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Business</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Business.BusinessShortDescription)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Business.BusinessShortDescription)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Business.BusinessDescription)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Business.BusinessDescription)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Business.ModifiedUserName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Business.ModifiedUserName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Business.LastModifiedDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Business.LastModifiedDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Business.IsActive)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Business.IsActive)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Business.BusinessId">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
