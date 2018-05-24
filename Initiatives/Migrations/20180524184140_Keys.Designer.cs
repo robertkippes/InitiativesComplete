@@ -11,9 +11,10 @@ using System;
 namespace Initiatives.Migrations
 {
     [DbContext(typeof(InitiativeContext))]
-    partial class InitiativeContextModelSnapshot : ModelSnapshot
+    [Migration("20180524184140_Keys")]
+    partial class Keys
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

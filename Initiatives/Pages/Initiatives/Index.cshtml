@@ -1,0 +1,138 @@
+@page
+@model Initiatives.Pages.Initiatives.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Initiative[0].EngagementName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Initiative[0].EngagementIdentifier)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Initiative[0].PHI)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Initiative[0].PCI)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Initiative[0].UpStreamSystem)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Initiative[0].DownStreamSystem)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Initiative[0].ProjectStartDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Initiative[0].ARBDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Initiative[0].ReceiveDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Initiative[0].StartDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Initiative[0].CompleteDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Initiative[0].ModifiedUserName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Initiative[0].LastModifiedDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Initiative[0].IsActive)
+                </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Initiative[0].EngagementTypeNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Initiative[0].LocationNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Initiative[0].ResourceNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Initiative[0].SolutionTypeNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Initiative) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EngagementName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EngagementIdentifier)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PHI)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PCI)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpStreamSystem)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DownStreamSystem)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectStartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ARBDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReceiveDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompleteDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedUserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastModifiedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EngagementTypeNavigation.EngagementTypeDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LocationNavigation.LocationDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ResourceNavigation.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SolutionTypeNavigation.ModifiedUserName)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.InitiativeId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.InitiativeId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.InitiativeId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

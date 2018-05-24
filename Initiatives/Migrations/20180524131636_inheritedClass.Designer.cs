@@ -11,13 +11,14 @@ using System;
 namespace Initiatives.Migrations
 {
     [DbContext(typeof(InitiativeContext))]
-    partial class InitiativeContextModelSnapshot : ModelSnapshot
+    [Migration("20180524131636_inheritedClass")]
+    partial class inheritedClass
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.0.3-rtm-10026")
+                .HasAnnotation("ProductVersion", "2.0.2-rtm-10011")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Initiatives.Models.Business", b =>
@@ -113,6 +114,8 @@ namespace Initiatives.Migrations
                     b.Property<DateTime?>("CompleteDate")
                         .HasColumnType("date");
 
+                    b.Property<int?>("DeploymentLocation");
+
                     b.Property<string>("DownStreamSystem")
                         .HasColumnType("nchar(25)");
 
@@ -122,14 +125,12 @@ namespace Initiatives.Migrations
                     b.Property<string>("EngagementName")
                         .HasColumnType("nchar(15)");
 
-                    b.Property<int?>("EngagementTypeId");
+                    b.Property<int?>("EngagementType");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
                     b.Property<DateTime>("LastModifiedDate");
-
-                    b.Property<int?>("LocationId");
 
                     b.Property<string>("ModifiedUserName")
                         .IsRequired()
@@ -149,7 +150,7 @@ namespace Initiatives.Migrations
 
                     b.Property<int?>("Resource");
 
-                    b.Property<int?>("SolutionTypeId");
+                    b.Property<int?>("SolutionType");
 
                     b.Property<DateTime?>("StartDate")
                         .HasColumnType("date");
@@ -159,13 +160,13 @@ namespace Initiatives.Migrations
 
                     b.HasKey("InitiativeId");
 
-                    b.HasIndex("EngagementTypeId");
+                    b.HasIndex("DeploymentLocation");
 
-                    b.HasIndex("LocationId");
+                    b.HasIndex("EngagementType");
 
                     b.HasIndex("Resource");
 
-                    b.HasIndex("SolutionTypeId");
+                    b.HasIndex("SolutionType");
 
                     b.ToTable("Initiative");
                 });
@@ -353,15 +354,15 @@ namespace Initiatives.Migrations
 
             modelBuilder.Entity("Initiatives.Models.Initiative", b =>
                 {
-                    b.HasOne("Initiatives.Models.EngagementType", "EngagementTypeNavigation")
-                        .WithMany("Initiative")
-                        .HasForeignKey("EngagementTypeId")
-                        .HasConstraintName("FK_Initiative_EngagementType");
-
                     b.HasOne("Initiatives.Models.Location", "LocationNavigation")
                         .WithMany("Initiative")
-                        .HasForeignKey("LocationId")
-                        .HasConstraintName("FK_Initiative_Location");
+                        .HasForeignKey("DeploymentLocation")
+                        .HasConstraintName("FK_Initiative_DeploymentLocation");
+
+                    b.HasOne("Initiatives.Models.EngagementType", "EngagementTypeNavigation")
+                        .WithMany("Initiative")
+                        .HasForeignKey("EngagementType")
+                        .HasConstraintName("FK_Initiative_EngagementType");
 
                     b.HasOne("Initiatives.Models.Resource", "ResourceNavigation")
                         .WithMany("Initiative")
@@ -370,7 +371,7 @@ namespace Initiatives.Migrations
 
                     b.HasOne("Initiatives.Models.SolutionType", "SolutionTypeNavigation")
                         .WithMany("Initiative")
-                        .HasForeignKey("SolutionTypeId")
+                        .HasForeignKey("SolutionType")
                         .HasConstraintName("FK_Initiative_SolutionType");
                 });
 

@@ -40,6 +40,7 @@ namespace Initiatives.Models
             return  await base.SaveChangesAsync();
         }
 
+        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -81,6 +82,7 @@ namespace Initiatives.Models
                     .HasColumnType("nchar(25)");
                 entity.Property(e => e.IsActive)
                     .HasColumnType("bit");
+
             });
 
             modelBuilder.Entity<EngagementType>(entity =>
@@ -100,7 +102,8 @@ namespace Initiatives.Models
             {
                 entity.Property(e => e.IsActive)
                     .HasColumnType("bit");
-                entity.Property(e => e.ARBdate)
+
+                entity.Property(e => e.ARBDate)
                     .HasColumnName("ARBDate")
                     .HasColumnType("date");
                 entity.Property(e => e.CompleteDate)
@@ -123,25 +126,14 @@ namespace Initiatives.Models
                     .HasColumnType("date");
                 entity.Property(e => e.UpStreamSystem)
                     .HasColumnType("nchar(25)");
-                // Foreign Keys
-                //entity.HasOne(d => d.BusinessNavigation)
-                //    .WithMany(p => p.Initiative)
-                //    .HasForeignKey(d => d.Business)
-                //    .HasConstraintName("FK_Initiative_Business");
-
-                //entity.HasOne(d => d.FacilityNavigation)
-                //    .WithMany(p => p.Initiative)
-                //    .HasForeignKey(d => d.Facility)
-                //    .HasConstraintName("FK_Initiative_Facility");
-
-                entity.HasOne(d => d.LocationNavigation)
+               entity.HasOne(d => d.LocationNavigation)
                     .WithMany(p => p.Initiative)
-                    .HasForeignKey(d => d.DeploymentLocation)
-                    .HasConstraintName("FK_Initiative_DeploymentLocation");
+                    .HasForeignKey(d => d.LocationId)
+                    .HasConstraintName("FK_Initiative_Location");
 
                 entity.HasOne(d => d.EngagementTypeNavigation)
                     .WithMany(p => p.Initiative)
-                    .HasForeignKey(d => d.EngagementType)
+                    .HasForeignKey(d => d.EngagementTypeId)
                     .HasConstraintName("FK_Initiative_EngagementType");
 
                 entity.HasOne(d => d.ResourceNavigation)
@@ -151,7 +143,7 @@ namespace Initiatives.Models
 
                 entity.HasOne(d => d.SolutionTypeNavigation)
                     .WithMany(p => p.Initiative)
-                    .HasForeignKey(d => d.SolutionType)
+                    .HasForeignKey(d => d.SolutionTypeId)
                     .HasConstraintName("FK_Initiative_SolutionType");
             });
 

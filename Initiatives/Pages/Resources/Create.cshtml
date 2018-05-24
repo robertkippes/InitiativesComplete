@@ -1,0 +1,54 @@
+@page
+@model Initiatives.Pages.Resources.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<h4>Resource</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Resource.FirstName" class="control-label"></label>
+                <input asp-for="Resource.FirstName" class="form-control" />
+                <span asp-validation-for="Resource.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Resource.LastName" class="control-label"></label>
+                <input asp-for="Resource.LastName" class="form-control" />
+                <span asp-validation-for="Resource.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Resource.ModifiedUserName" class="control-label"></label>
+                <input asp-for="Resource.ModifiedUserName" class="form-control" />
+                <span asp-validation-for="Resource.ModifiedUserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Resource.LastModifiedDate" class="control-label"></label>
+                <input asp-for="Resource.LastModifiedDate" class="form-control" />
+                <span asp-validation-for="Resource.LastModifiedDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Resource.IsActive" class="control-label"></label>
+                <input asp-for="Resource.IsActive" class="form-control" />
+                <span asp-validation-for="Resource.IsActive" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

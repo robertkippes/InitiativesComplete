@@ -5,14 +5,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Initiatives.Models
 {
-    public partial class Initiative
+    public partial class Initiative : LastModified
     {
         public Initiative()
         {
             InitiativeMetaTag = new HashSet<InitiativeMetaTag>();
         }
 
-        public bool IsActive { get; set; }
+        [Key]
         public int InitiativeId { get; set; }
         [Display(Name = "Initiative Name")]
         [DataType(DataType.Text)]
@@ -20,13 +20,11 @@ namespace Initiatives.Models
         [Display(Name = "Engagement Identifier")]
         public string EngagementIdentifier { get; set; }
         [Display(Name = "Engagement Type")]
-        public int? EngagementType { get; set; }
+        public int? EngagementTypeId { get; set; }
         [Display(Name = "Solution Type")]
-        public int? SolutionType { get; set; }
-        [Display(Name = "Business")]
-        public int? Business { get; set; }
+        public int? SolutionTypeId { get; set; }
         [Display(Name = "Deployment Location")]
-        public int? DeploymentLocation { get; set; }
+        public int? LocationId { get; set; }
         [Display(Name = "PHI")]
         public bool PHI { get; set; }
         [Display(Name = "PCI")]
@@ -35,14 +33,12 @@ namespace Initiatives.Models
         public string UpStreamSystem { get; set; }
         [Display(Name = "Downstream System")]
         public string DownStreamSystem { get; set; }
-        [Display(Name = "Facility")]
-        public int? Facility { get; set; }
         [Display(Name = "Project Start")]
         [DataType(DataType.Date)]
         public DateTime? ProjectStartDate { get; set; }
         [Display(Name = "ARB Date")]
         [DataType(DataType.Date)]
-        public DateTime? ARBdate { get; set; }
+        public DateTime? ARBDate { get; set; }
         public int? Resource { get; set; }
         [Display(Name = "Received")]
         [DataType(DataType.Date)]

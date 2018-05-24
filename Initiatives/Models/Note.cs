@@ -4,12 +4,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Initiatives.Models
 {
-    public partial class Note
+    public partial class Note : LastModified
     {
+        [Key]
         public int NoteId { get; set; }
         public int InitiativeId { get; set; }
-        public bool IsActive { get; set; }
-        [Required]
+       [Required]
         [Column("Note")]
         public string Note1 { get; set; }
         [Required]

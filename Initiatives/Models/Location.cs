@@ -4,21 +4,16 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Initiatives.Models
 {
-    public partial class Location
+    public partial class Location : LastModified
     {
         public Location()
         {
             Initiative = new HashSet<Initiative>();
         }
-
+        [Key]
         public int LocationId { get; set; }
-        public bool IsActive { get; set; }
-        public string LocationShortDescription { get; set; }
+       public string LocationShortDescription { get; set; }
         public string LocationDescription { get; set; }
-        public string ModifiedUserName { get; set; }
-        [DataType(DataType.Date)]
-        public DateTime LastModifiedDate { get; set; }
-
-        public ICollection<Initiative> Initiative { get; set; }
+       public ICollection<Initiative> Initiative { get; set; }
     }
 }
