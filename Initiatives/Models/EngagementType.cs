@@ -12,7 +12,7 @@ namespace Initiatives.Models
         }
         [Key]
         public int EngagementTypeId { get; set; }
-  public string EngagementTypeShortDescription { get; set; }
+        public string EngagementTypeShortDescription { get; set; }
         public string EngagementTypeDescription { get; set; }
         public ICollection<Initiative> Initiative { get; set; }
     }

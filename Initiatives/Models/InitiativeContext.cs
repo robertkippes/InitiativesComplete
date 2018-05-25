@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
+using System.Security.Principal;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -37,10 +38,17 @@ namespace Initiatives.Models
                 item.State = EntityState.Unchanged;
                 item.CurrentValues["IsActive"] = false;
             }
+            //Add last Mod User and Last change Date
+            foreach (var item in ChangeTracker.Entries()
+                .Where(e => e.State != EntityState.Unchanged &&
+                            e.Metadata.GetProperties().Any(x => x.Name == "ModifiedUserName") && e.Metadata.GetProperties().Any(x => x.Name == "LastModifiedDate")))
+            {
+                item.CurrentValues["ModifiedUserName"] = WindowsIdentity.GetCurrent().Name;
+                item.CurrentValues["LastModifiedDate"] = DateTime.Now;
+            }
             return  await base.SaveChangesAsync();
         }
-
-        
+      
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

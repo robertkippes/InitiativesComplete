@@ -22,7 +22,19 @@ namespace Initiatives.Pages.Businesses
 
         public async Task OnGetAsync()
         {
-            Business = await _context.Businesses.ToListAsync();
+            
+
+            IQueryable<Business> businessIq = from s in _context.Businesses
+                                                  select s;
+            businessIq= businessIq.Where(s => s.IsActive);
+            Business = await businessIq
+                .OrderBy(i => i.LastModifiedDate)
+                .ToListAsync();
+
+            
+
+
+            
         }
     }
 }

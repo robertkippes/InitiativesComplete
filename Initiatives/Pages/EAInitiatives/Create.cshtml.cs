@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Initiatives.Models;
 
-namespace Initiatives.Pages.MetaTags
+namespace Initiatives.Pages.EAInitiatives
 {
     public class CreateModel : PageModel
     {
@@ -20,11 +20,15 @@ namespace Initiatives.Pages.MetaTags
 
         public IActionResult OnGet()
         {
+        ViewData["EngagementTypeId"] = new SelectList(_context.EngagementType, "EngagementTypeId", "EngagementTypeDescription");
+        ViewData["LocationId"] = new SelectList(_context.DeploymentLocation, "LocationId", "LocationDescription");
+        ViewData["Resource"] = new SelectList(_context.Resource, "ResourceId", "FirstName");
+        ViewData["SolutionTypeId"] = new SelectList(_context.SolutionType, "SolutionTypeId", "ModifiedUserName");
             return Page();
         }
 
         [BindProperty]
-        public MetaTag MetaTag { get; set; }
+        public Initiative Initiative { get; set; }
 
         public async Task<IActionResult> OnPostAsync()
         {
@@ -33,7 +37,7 @@ namespace Initiatives.Pages.MetaTags
                 return Page();
             }
 
-            _context.MetaTag.Add(MetaTag);
+            _context.Initiative.Add(Initiative);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

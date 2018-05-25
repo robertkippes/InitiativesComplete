@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Initiatives.Models;
 
-namespace Initiatives.Pages.MetaTags
+namespace Initiatives.Pages.EAInitiatives
 {
     public class IndexModel : PageModel
     {
@@ -18,11 +18,15 @@ namespace Initiatives.Pages.MetaTags
             _context = context;
         }
 
-        public IList<MetaTag> MetaTag { get;set; }
+        public IList<Initiative> Initiative { get;set; }
 
         public async Task OnGetAsync()
         {
-            MetaTag = await _context.MetaTag.ToListAsync();
+            Initiative = await _context.Initiative
+                .Include(i => i.EngagementTypeNavigation)
+                .Include(i => i.LocationNavigation)
+                .Include(i => i.ResourceNavigation)
+                .Include(i => i.SolutionTypeNavigation).ToListAsync();
         }
     }
 }

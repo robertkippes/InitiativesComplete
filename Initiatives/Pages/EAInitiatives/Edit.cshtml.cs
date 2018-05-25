@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Initiatives.Models;
 
-namespace Initiatives.Pages.MetaTags
+namespace Initiatives.Pages.EAInitiatives
 {
     public class EditModel : PageModel
     {
@@ -20,7 +20,7 @@ namespace Initiatives.Pages.MetaTags
         }
 
         [BindProperty]
-        public MetaTag MetaTag { get; set; }
+        public Initiative Initiative { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -29,12 +29,20 @@ namespace Initiatives.Pages.MetaTags
                 return NotFound();
             }
 
-            MetaTag = await _context.MetaTag.SingleOrDefaultAsync(m => m.MetaTagId == id);
+            Initiative = await _context.Initiative
+                .Include(i => i.EngagementTypeNavigation)
+                .Include(i => i.LocationNavigation)
+                .Include(i => i.ResourceNavigation)
+                .Include(i => i.SolutionTypeNavigation).SingleOrDefaultAsync(m => m.InitiativeId == id);
 
-            if (MetaTag == null)
+            if (Initiative == null)
             {
                 return NotFound();
             }
+           ViewData["EngagementTypeId"] = new SelectList(_context.EngagementType, "EngagementTypeId", "EngagementTypeDescription");
+           ViewData["LocationId"] = new SelectList(_context.DeploymentLocation, "LocationId", "LocationDescription");
+           ViewData["Resource"] = new SelectList(_context.Resource, "ResourceId", "FirstName");
+           ViewData["SolutionTypeId"] = new SelectList(_context.SolutionType, "SolutionTypeId", "ModifiedUserName");
             return Page();
         }
 
@@ -45,7 +53,7 @@ namespace Initiatives.Pages.MetaTags
                 return Page();
             }
 
-            _context.Attach(MetaTag).State = EntityState.Modified;
+            _context.Attach(Initiative).State = EntityState.Modified;
 
             try
             {
@@ -53,7 +61,7 @@ namespace Initiatives.Pages.MetaTags
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!MetaTagExists(MetaTag.MetaTagId))
+                if (!InitiativeExists(Initiative.InitiativeId))
                 {
                     return NotFound();
                 }
@@ -66,9 +74,9 @@ namespace Initiatives.Pages.MetaTags
             return RedirectToPage("./Index");
         }
 
-        private bool MetaTagExists(int id)
+        private bool InitiativeExists(int id)
         {
-            return _context.MetaTag.Any(e => e.MetaTagId == id);
+            return _context.Initiative.Any(e => e.InitiativeId == id);
         }
     }
 }

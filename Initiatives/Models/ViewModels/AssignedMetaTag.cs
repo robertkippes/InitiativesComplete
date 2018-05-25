@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Initiatives.Models.ViewModels
 {
-    public class AssignedMetaTagData
+    public class AssignedMetaTag
     {
         public int MetaTagId { get; set; }
         public string MetaTagDescription { get; set; }

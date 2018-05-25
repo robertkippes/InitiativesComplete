@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Initiatives.Models;
 
-namespace Initiatives.Pages.MetaTags
+namespace Initiatives.Pages.EAInitiatives
 {
     public class DeleteModel : PageModel
     {
@@ -19,7 +19,7 @@ namespace Initiatives.Pages.MetaTags
         }
 
         [BindProperty]
-        public MetaTag MetaTag { get; set; }
+        public Initiative Initiative { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -28,9 +28,13 @@ namespace Initiatives.Pages.MetaTags
                 return NotFound();
             }
 
-            MetaTag = await _context.MetaTag.SingleOrDefaultAsync(m => m.MetaTagId == id);
+            Initiative = await _context.Initiative
+                .Include(i => i.EngagementTypeNavigation)
+                .Include(i => i.LocationNavigation)
+                .Include(i => i.ResourceNavigation)
+                .Include(i => i.SolutionTypeNavigation).SingleOrDefaultAsync(m => m.InitiativeId == id);
 
-            if (MetaTag == null)
+            if (Initiative == null)
             {
                 return NotFound();
             }
@@ -44,11 +48,11 @@ namespace Initiatives.Pages.MetaTags
                 return NotFound();
             }
 
-            MetaTag = await _context.MetaTag.FindAsync(id);
+            Initiative = await _context.Initiative.FindAsync(id);
 
-            if (MetaTag != null)
+            if (Initiative != null)
             {
-                _context.MetaTag.Remove(MetaTag);
+                _context.Initiative.Remove(Initiative);
                 await _context.SaveChangesAsync();
             }
 

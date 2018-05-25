@@ -11,8 +11,8 @@ using System;
 namespace Initiatives.Migrations
 {
     [DbContext(typeof(InitiativeContext))]
-    [Migration("20180524184140_Keys")]
-    partial class Keys
+    [Migration("20180525184857_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -40,7 +40,6 @@ namespace Initiatives.Migrations
                     b.Property<DateTime>("LastModifiedDate");
 
                     b.Property<string>("ModifiedUserName")
-                        .IsRequired()
                         .HasColumnType("nchar(150)");
 
                     b.HasKey("BusinessId");
@@ -67,7 +66,6 @@ namespace Initiatives.Migrations
                     b.Property<DateTime>("LastModifiedDate");
 
                     b.Property<string>("ModifiedUserName")
-                        .IsRequired()
                         .HasColumnType("nchar(150)");
 
                     b.HasKey("EngagementTypeId");
@@ -94,7 +92,6 @@ namespace Initiatives.Migrations
                     b.Property<DateTime>("LastModifiedDate");
 
                     b.Property<string>("ModifiedUserName")
-                        .IsRequired()
                         .HasColumnType("nchar(150)");
 
                     b.HasKey("FacilityId");
@@ -133,7 +130,6 @@ namespace Initiatives.Migrations
                     b.Property<int?>("LocationId");
 
                     b.Property<string>("ModifiedUserName")
-                        .IsRequired()
                         .HasColumnType("nchar(150)");
 
                     b.Property<bool>("PCI")
@@ -229,7 +225,6 @@ namespace Initiatives.Migrations
                         .HasColumnType("nchar(15)");
 
                     b.Property<string>("ModifiedUserName")
-                        .IsRequired()
                         .HasColumnType("nchar(150)");
 
                     b.HasKey("LocationId");
@@ -256,7 +251,6 @@ namespace Initiatives.Migrations
                         .HasColumnType("nchar(15)");
 
                     b.Property<string>("ModifiedUserName")
-                        .IsRequired()
                         .HasColumnType("nchar(150)");
 
                     b.HasKey("MetaTagId");
@@ -282,7 +276,6 @@ namespace Initiatives.Migrations
                     b.Property<DateTime>("LastModifiedDate");
 
                     b.Property<string>("ModifiedUserName")
-                        .IsRequired()
                         .HasColumnType("nchar(150)");
 
                     b.Property<string>("Note1")
@@ -317,7 +310,6 @@ namespace Initiatives.Migrations
                         .HasColumnType("nchar(15)");
 
                     b.Property<string>("ModifiedUserName")
-                        .IsRequired()
                         .HasColumnType("nchar(150)");
 
                     b.HasKey("ResourceId");
@@ -336,7 +328,6 @@ namespace Initiatives.Migrations
                     b.Property<DateTime>("LastModifiedDate");
 
                     b.Property<string>("ModifiedUserName")
-                        .IsRequired()
                         .HasColumnType("nchar(150)");
 
                     b.Property<string>("SolutionTypeDescription")

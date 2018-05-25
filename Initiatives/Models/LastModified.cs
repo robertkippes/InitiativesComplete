@@ -9,12 +9,13 @@ namespace Initiatives.Models
 {
     public class LastModified
     {
-        [Required]
+        [Display(Name = "Last Modified User")]
         [Column(TypeName = "nchar(150)")]
         public string ModifiedUserName { get; set; }
-        [Required]
+        [Display(Name = "Last Modified Date")]
         [DataType(DataType.Date)]
         public DateTime LastModifiedDate { get; set; }
-       public bool IsActive { get; set; }
+        [Display(Name = "Is Active?")]
+        public bool IsActive { get; set; }
     }
 }

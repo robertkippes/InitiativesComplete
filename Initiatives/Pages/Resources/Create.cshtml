@@ -23,19 +23,9 @@
                 <input asp-for="Resource.LastName" class="form-control" />
                 <span asp-validation-for="Resource.LastName" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Resource.ModifiedUserName" class="control-label"></label>
-                <input asp-for="Resource.ModifiedUserName" class="form-control" />
-                <span asp-validation-for="Resource.ModifiedUserName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Resource.LastModifiedDate" class="control-label"></label>
-                <input asp-for="Resource.LastModifiedDate" class="form-control" />
-                <span asp-validation-for="Resource.LastModifiedDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
+           <div class="form-group">
                 <label asp-for="Resource.IsActive" class="control-label"></label>
-                <input asp-for="Resource.IsActive" class="form-control" />
+                <input asp-for="Resource.IsActive" class="form-control" value="true"/>
                 <span asp-validation-for="Resource.IsActive" class="text-danger"></span>
             </div>
             <div class="form-group">

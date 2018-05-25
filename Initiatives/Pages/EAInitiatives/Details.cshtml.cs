@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Initiatives.Models;
 
-namespace Initiatives.Pages.MetaTags
+namespace Initiatives.Pages.EAInitiatives
 {
     public class DetailsModel : PageModel
     {
@@ -18,7 +18,7 @@ namespace Initiatives.Pages.MetaTags
             _context = context;
         }
 
-        public MetaTag MetaTag { get; set; }
+        public Initiative Initiative { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -27,9 +27,13 @@ namespace Initiatives.Pages.MetaTags
                 return NotFound();
             }
 
-            MetaTag = await _context.MetaTag.SingleOrDefaultAsync(m => m.MetaTagId == id);
+            Initiative = await _context.Initiative
+                .Include(i => i.EngagementTypeNavigation)
+                .Include(i => i.LocationNavigation)
+                .Include(i => i.ResourceNavigation)
+                .Include(i => i.SolutionTypeNavigation).SingleOrDefaultAsync(m => m.InitiativeId == id);
 
-            if (MetaTag == null)
+            if (Initiative == null)
             {
                 return NotFound();
             }

@@ -23,24 +23,7 @@
                 <input asp-for="EngagementType.EngagementTypeDescription" class="form-control" />
                 <span asp-validation-for="EngagementType.EngagementTypeDescription" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="EngagementType.ModifiedUserName" class="control-label"></label>
-                <input asp-for="EngagementType.ModifiedUserName" class="form-control" />
-                <span asp-validation-for="EngagementType.ModifiedUserName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EngagementType.LastModifiedDate" class="control-label"></label>
-                <input asp-for="EngagementType.LastModifiedDate" class="form-control" />
-                <span asp-validation-for="EngagementType.LastModifiedDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="EngagementType.IsActive" /> @Html.DisplayNameFor(model => model.IsActive))
-                    </label>
-                </div>
-            </div>
-            <div class="form-group">
+            div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </form>

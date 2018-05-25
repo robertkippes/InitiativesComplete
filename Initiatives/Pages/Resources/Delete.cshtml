@@ -22,14 +22,20 @@
             @Html.DisplayNameFor(model => model.Resource.LastName)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Resource.LastName)
+            @Html.DisplayFor(model => model.Resource.ModifiedUserName)
+        </dd>
+        <dd>
+            @Html.DisplayFor(model => model.Resource.LastModifiedDate)
+        </dd>
+        <dd>
+            @Html.DisplayFor(model => model.Resource.IsActive)
         </dd>
     </dl>
     
     <form method="post">
         <input type="hidden" asp-for="Resource.ResourceId" />
-        <>
-        <input type="submit" value="Delete" class="btn btn-default" /> |
+      
+        <input type="submit" value="Delete" class="btn btn-default" />
         <a asp-page="./Index">Back to List</a>
     </form>
 </div>

@@ -14,16 +14,19 @@
     <thead>
         <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.MetaTag[0].Code)
+                    @Html.DisplayNameFor(model => model.MetaTag[0].MetaTagShortDescription)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.MetaTag[0].Description)
+                    @Html.DisplayNameFor(model => model.MetaTag[0].MetaTagDescription)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.MetaTag[0].LastUserName)
+                    @Html.DisplayNameFor(model => model.MetaTag[0].ModifiedUserName)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.MetaTag[0].LastModifiedDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MetaTag[0].IsActive)
                 </th>
             <th></th>
         </tr>
@@ -32,21 +35,24 @@
 @foreach (var item in Model.MetaTag) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Code)
+                @Html.DisplayFor(modelItem => item.MetaTagShortDescription)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Description)
+                @Html.DisplayFor(modelItem => item.MetaTagDescription)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.LastUserName)
+                @Html.DisplayFor(modelItem => item.ModifiedUserName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.LastModifiedDate)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.MetaTagId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.MetaTagId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.MetaTagId">Delete</a>
             </td>
         </tr>
 }
