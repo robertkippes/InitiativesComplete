@@ -27,7 +27,7 @@ namespace Initiatives.Pages.Businesses
                 return NotFound();
             }
 
-            Business = await _context.Businesses.SingleOrDefaultAsync(m => m.BusinessId == id);
+            Business = await _context.Business.SingleOrDefaultAsync(m => m.BusinessId == id);
 
             if (Business == null)
             {

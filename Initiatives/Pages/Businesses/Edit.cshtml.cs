@@ -29,7 +29,7 @@ namespace Initiatives.Pages.Businesses
                 return NotFound();
             }
 
-            Business = await _context.Businesses.SingleOrDefaultAsync(m => m.BusinessId == id);
+            Business = await _context.Business.SingleOrDefaultAsync(m => m.BusinessId == id);
 
             if (Business == null)
             {
@@ -68,7 +68,7 @@ namespace Initiatives.Pages.Businesses
 
         private bool BusinessExists(int id)
         {
-            return _context.Businesses.Any(e => e.BusinessId == id);
+            return _context.Business.Any(e => e.BusinessId == id);
         }
     }
 }

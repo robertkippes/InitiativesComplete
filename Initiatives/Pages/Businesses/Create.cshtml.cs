@@ -33,7 +33,7 @@ namespace Initiatives.Pages.Businesses
                 return Page();
             }
 
-            _context.Businesses.Add(Business);
+            _context.Business.Add(Business);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

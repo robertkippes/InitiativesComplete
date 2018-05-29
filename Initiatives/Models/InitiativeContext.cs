@@ -12,7 +12,7 @@ namespace Initiatives.Models
 {
     public partial class InitiativeContext : DbContext
     {
-        public virtual DbSet<Business> Businesses { get; set; }
+        public virtual DbSet<Business> Business { get; set; }
         public virtual DbSet<Facility> Facility { get; set; }
         public virtual DbSet<Location> DeploymentLocation { get; set; }
         public virtual DbSet<EngagementType> EngagementType { get; set; }

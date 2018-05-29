@@ -24,7 +24,7 @@ namespace Initiatives.Pages.Businesses
         {
             
 
-            IQueryable<Business> businessIq = from s in _context.Businesses
+            IQueryable<Business> businessIq = from s in _context.Business
                                                   select s;
             businessIq= businessIq.Where(s => s.IsActive);
             Business = await businessIq

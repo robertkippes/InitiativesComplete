@@ -28,7 +28,7 @@ namespace Initiatives.Pages.Businesses
                 return NotFound();
             }
 
-            Business = await _context.Businesses.SingleOrDefaultAsync(m => m.BusinessId == id);
+            Business = await _context.Business.SingleOrDefaultAsync(m => m.BusinessId == id);
 
             if (Business == null)
             {
@@ -44,11 +44,11 @@ namespace Initiatives.Pages.Businesses
                 return NotFound();
             }
 
-            Business = await _context.Businesses.FindAsync(id);
+            Business = await _context.Business.FindAsync(id);
 
             if (Business != null)
             {
-                _context.Businesses.Remove(Business);
+                _context.Business.Remove(Business);
                 await _context.SaveChangesAsync();
             }
 
