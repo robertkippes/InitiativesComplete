@@ -42,14 +42,14 @@
             <div class="form-group">
                 <div class="checkbox">
                     <label>
-                        <input asp-for="Initiative.PHI" /> @Html.DisplayNameFor(model => model.PHI)
+                        <input asp-for="Initiative.PHI" /> @Html.DisplayNameFor(model => model.Initiative.PHI)
                     </label>
                 </div>
             </div>
             <div class="form-group">
                 <div class="checkbox">
                     <label>
-                        <input asp-for="Initiative.PCI" /> @Html.DisplayNameFor(model => model.PCI)
+                        <input asp-for="Initiative.PCI" /> @Html.DisplayNameFor(model => model.Initiative.PCI)
                     </label>
                 </div>
             </div>
@@ -94,19 +94,87 @@
                 <span asp-validation-for="Initiative.CompleteDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Initiative.ModifiedUserName" class="control-label"></label>
-                <input asp-for="Initiative.ModifiedUserName" class="form-control" />
-                <span asp-validation-for="Initiative.ModifiedUserName" class="text-danger"></span>
+                <div class="col-md-offset-2 col-md-10">
+                    <table>
+                        <tr>
+                        @{
+                            int cnt = 0;
+
+                            foreach (var business in Model.AssignedBusinessDataList)
+                            {
+                                if (cnt++ % 3 == 0)
+                                {
+                                    @:</tr><tr>
+                                }
+                                @:<td>
+                                <input type="checkbox"
+                                       name="selectedBusiness"
+                                       value="@business.BusinessId"
+                                       @(Html.Raw(business.Assigned ? "checked=\"checked\"" : "")) />
+                                @business.BusinessId @:  @business.BusinessDescription
+                                @:</td>
+                            }
+                            @:</tr>
+                        }
+                    </table>
+                </div>
             </div>
             <div class="form-group">
-                <label asp-for="Initiative.LastModifiedDate" class="control-label"></label>
-                <input asp-for="Initiative.LastModifiedDate" class="form-control" />
-                <span asp-validation-for="Initiative.LastModifiedDate" class="text-danger"></span>
+                <div class="col-md-offset-2 col-md-10">
+                    <table>
+                        <tr>
+                        @{
+                            cnt = 0;
+
+                            foreach (var facility in Model.AssignedFacilityDataList)
+                            {
+                                if (cnt++ % 3 == 0)
+                                {
+                                    @:</tr><tr>
+                                }
+                                @:<td>
+                                <input type="checkbox"
+                                       name="selectedFacility"
+                                       value="@facility.FacilityId"
+                                       @(Html.Raw(facility.Assigned ? "checked=\"checked\"" : "")) />
+                                @facility.FacilityId @:  @facility.FacilityDescription
+                                @:</td>
+                            }
+                            @:</tr>
+                        }
+                    </table>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <table>
+                        <tr>
+                        @{
+                            cnt = 0;
+
+                            foreach (var metaTag in Model.AssignedMetaTagDataList)
+                            {
+                                if (cnt++ % 3 == 0)
+                                {
+                                    @:</tr><tr>
+                                }
+                                @:<td>
+                                <input type="checkbox"
+                                       name="selectedMetaTags"
+                                       value="@metaTag.MetaTagId"
+                                       @(Html.Raw(metaTag.Assigned ? "checked=\"checked\"" : "")) />
+                                @metaTag.MetaTagId @:  @metaTag.MetaTagDescription
+                                @:</td>
+                            }
+                            @:</tr>
+                        }
+                    </table>
+                </div>
             </div>
             <div class="form-group">
                 <div class="checkbox">
                     <label>
-                        <input asp-for="Initiative.IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+                        <input asp-for="Initiative.IsActive" /> @Html.DisplayNameFor(model => model.Initiative.IsActive)
                     </label>
                 </div>
             </div>

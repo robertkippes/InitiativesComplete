@@ -88,38 +88,13 @@
                 <input asp-for="Initiative.CompleteDate" class="form-control" />
                 <span asp-validation-for="Initiative.CompleteDate" class="text-danger"></span>
             </div>
+            
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <table>
                         <tr>
                         @{
                             int cnt = 0;
-
-                            foreach (var metaTag in Model.AssignedMetaTagDataList)
-                            {
-                                if (cnt++ % 3 == 0)
-                                {
-                                    @:</tr><tr>
-                                }
-                                @:<td> Meta Tags
-                                <input type="checkbox"
-                                       name="selectedMetaTags"
-                                       value="@metaTag.MetaTagId"
-                                       @(Html.Raw(metaTag.Assigned ? "checked=\"checked\"" : "")) />
-                                @metaTag.MetaTagId @:  @metaTag.MetaTagDescription
-                                @:</td>
-                            }
-                            @:</tr>
-                        }
-                    </table>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <table>
-                        <tr>
-                        @{
-                            cnt = 0;
 
                             foreach (var business in Model.AssignedBusinessDataList)
                             {
@@ -159,6 +134,32 @@
                                        value="@facility.FacilityId"
                                        @(Html.Raw(facility.Assigned ? "checked=\"checked\"" : "")) />
                                 @facility.FacilityId @:  @facility.FacilityDescription
+                                @:</td>
+                            }
+                            @:</tr>
+                        }
+                    </table>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <table>
+                        <tr>
+                        @{
+                            cnt = 0;
+
+                            foreach (var metaTag in Model.AssignedMetaTagDataList)
+                            {
+                                if (cnt++ % 3 == 0)
+                                {
+                                    @:</tr><tr>
+                                }
+                                @:<td> Meta Tags
+                                <input type="checkbox"
+                                       name="selectedMetaTags"
+                                       value="@metaTag.MetaTagId"
+                                       @(Html.Raw(metaTag.Assigned ? "checked=\"checked\"" : "")) />
+                                @metaTag.MetaTagId @:  @metaTag.MetaTagDescription
                                 @:</td>
                             }
                             @:</tr>
