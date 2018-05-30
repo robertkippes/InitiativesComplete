@@ -128,6 +128,7 @@
                 @Html.DisplayFor(modelItem => item.SolutionTypeNavigation.ModifiedUserName)
             </td>
             <td>
+                <a asp-page="/Notes/Index" asp-route-id="@item.InitiativeId">Notes</a>
                 <a asp-page="./Edit" asp-route-id="@item.InitiativeId">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.InitiativeId">Details</a> |
                 <a asp-page="./Delete" asp-route-id="@item.InitiativeId">Delete</a>

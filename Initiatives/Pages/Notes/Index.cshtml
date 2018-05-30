@@ -26,7 +26,7 @@
                 @Html.DisplayNameFor(model => model.Note[0].CreateDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Note[0].NoteNavigation)
+                @Html.DisplayNameFor(model => model.Note[0].Initiative)
             </th>
             <th></th>
         </tr>
@@ -48,7 +48,7 @@
                     @Html.DisplayFor(modelItem => item.CreateDate)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.NoteNavigation.Id)
+                    @Html.DisplayFor(modelItem => item.Initiative.InitiativeId)
                 </td>
                 <td>
                     <a asp-page="./Edit" asp-route-id="@item.NoteId">Edit</a> |

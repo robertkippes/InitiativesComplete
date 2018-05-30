@@ -17,7 +17,9 @@ namespace Initiatives.Pages.EAInitiatives
         {
             _context = context;
         }
-
+        public string CurrentFilter { get; set; }
+        public bool IncludeDeleted { get; set; }
+        public int InitativeId { get; set; }
         public IList<Initiative> Initiative { get;set; }
 
         public async Task OnGetAsync()

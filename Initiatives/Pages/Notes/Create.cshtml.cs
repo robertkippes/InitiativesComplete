@@ -19,9 +19,10 @@ namespace Initiatives.Pages.Notes
             _context = context;
         }
 
-        public IActionResult OnGet()
+        public IActionResult OnGet(int? id)
         {
         ViewData["NoteId"] = new SelectList(_context.Initiative, "Id", "Id");
+
             return Page();
         }
 
