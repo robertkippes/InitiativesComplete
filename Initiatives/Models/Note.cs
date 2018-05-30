@@ -17,7 +17,7 @@ namespace Initiatives.Models
         public string UserName { get; set; }
         [Column(TypeName = "datetime")]
         public DateTime CreateDate { get; set; }
-        [ForeignKey("NoteId")]
+        [ForeignKey("InitiativeId")]
         [InverseProperty("Note")]
         public Initiative Initiative { get; set; }
     }

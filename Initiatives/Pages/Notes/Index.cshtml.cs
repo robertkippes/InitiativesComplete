@@ -21,12 +21,14 @@ namespace Initiatives.Pages.Notes
 
         public IList<Note> Note { get; set; }
 
-        public async Task OnGetAsync(int? id)
+        //id is the Engagements ID
+        public async Task OnGetAsync(int id)
         {
-            Note = await _context.Note.Include(n => n.Initiative).Where(a => a.InitiativeId == id).ToListAsync();
-            //Note = await _context.
-            // This is the filter type pattern.
-
+            Note = await _context.Note.Include(n => n.Initiative)
+                .Where(a => a.InitiativeId == id)
+                .AsNoTracking()
+                .ToListAsync();
+           
 
         }
 }

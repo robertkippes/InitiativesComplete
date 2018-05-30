@@ -1,4 +1,5 @@
 @page "{id:int?}"
+@using Microsoft.AspNetCore.Http
 @model Initiatives.Pages.Notes.CreateModel
 
 @{
@@ -15,7 +16,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Note.InitiativeId" class="control-label"></label>
-                <input asp-for="Note.InitiativeId" class="form-control" />
+                <input asp-for="Note.InitiativeId" class="form-control" value="@this.Model.InitativeId" readonly="readonly"/>
                 <span asp-validation-for="Note.InitiativeId" class="text-danger"></span>
             </div>
 

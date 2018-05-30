@@ -11,9 +11,9 @@ namespace Initiatives.Pages.EAInitiatives
 {
     public class IndexModel : PageModel
     {
-        private readonly Initiatives.Models.InitiativeContext _context;
+        private readonly InitiativeContext _context;
 
-        public IndexModel(Initiatives.Models.InitiativeContext context)
+        public IndexModel(InitiativeContext context)
         {
             _context = context;
         }
@@ -22,13 +22,37 @@ namespace Initiatives.Pages.EAInitiatives
         public int InitativeId { get; set; }
         public IList<Initiative> Initiative { get;set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(int? id, string searchString, bool includeInactive)
         {
-            Initiative = await _context.Initiative
+            
+            CurrentFilter = searchString;
+            IncludeDeleted = includeInactive;
+            
+
+            IQueryable<Initiative> initiativeIq = from s in _context.Initiative
+                select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                initiativeIq = initiativeIq.Where(s => s.ResourceNavigation.FirstName.Contains(searchString));
+            }
+
+            if (!includeInactive)
+            {
+                initiativeIq = initiativeIq.Where(s => s.IsActive);
+            }
+           
+
+            Initiative = await initiativeIq
+               .Include(i => i.LocationNavigation)
                 .Include(i => i.EngagementTypeNavigation)
-                .Include(i => i.LocationNavigation)
                 .Include(i => i.ResourceNavigation)
-                .Include(i => i.SolutionTypeNavigation).ToListAsync();
+                .Include(i => i.SolutionTypeNavigation)
+                .OrderBy(i => i.ReceiveDate)
+                .ToListAsync();
+            if (id != null)
+            {
+                InitativeId = id.Value;
+            }
         }
     }
 }

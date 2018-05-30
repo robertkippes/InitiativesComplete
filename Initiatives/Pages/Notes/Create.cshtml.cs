@@ -18,10 +18,12 @@ namespace Initiatives.Pages.Notes
         {
             _context = context;
         }
+        public int InitativeId { get; set; }
 
-        public IActionResult OnGet(int? id)
+        public IActionResult OnGet(int id)
         {
-        ViewData["NoteId"] = new SelectList(_context.Initiative, "Id", "Id");
+            InitativeId = id;
+                        //ViewData["NoteId"] = new SelectList(_context.Initiative, "Id", "Id");
 
             return Page();
         }

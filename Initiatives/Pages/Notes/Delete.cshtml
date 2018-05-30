@@ -37,16 +37,16 @@
             @Html.DisplayFor(model => model.Note.CreateDate)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Note.NoteNavigation)
+            @Html.DisplayNameFor(model => model.Note.Initiative)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Note.NoteNavigation.Id)
+            @Html.DisplayFor(model => model.Note.Initiative.InitiativeId)
         </dd>
     </dl>
     
     <form method="post">
         <input type="hidden" asp-for="Note.NoteId" />
         <input type="submit" value="Delete" class="btn btn-default" /> |
-        <a asp-page="./Index">Back to List</a>
+        <a asp-page="./Index"  asp-route-id="@Model.Note.InitiativeId">>Back to List</a>
     </form>
 </div>

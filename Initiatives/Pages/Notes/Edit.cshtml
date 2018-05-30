@@ -16,7 +16,7 @@
             <input type="hidden" asp-for="Note.NoteId" />
             <div class="form-group">
                 <label asp-for="Note.InitiativeId" class="control-label"></label>
-                <input asp-for="Note.InitiativeId" class="form-control" />
+                <input asp-for="Note.InitiativeId" class="form-control" aria-readonly="true"/>
                 <span asp-validation-for="Note.InitiativeId" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -26,12 +26,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="Note.UserName" class="control-label"></label>
-                <input asp-for="Note.UserName" class="form-control" />
+                <input asp-for="Note.UserName" class="form-control" aria-readonly="true" />
                 <span asp-validation-for="Note.UserName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Note.CreateDate" class="control-label"></label>
-                <input asp-for="Note.CreateDate" class="form-control" />
+                <input asp-for="Note.CreateDate" class="form-control" aria-readonly="true"/>
                 <span asp-validation-for="Note.CreateDate" class="text-danger"></span>
             </div>
             <div class="form-group">

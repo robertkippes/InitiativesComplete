@@ -1,4 +1,4 @@
-@page "{id:int?}"
+@page "{id:int}"
 @model Initiatives.Pages.Notes.IndexModel
 
 @{
@@ -48,7 +48,7 @@
                     @Html.DisplayFor(modelItem => item.CreateDate)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Initiative.InitiativeId)
+                    @Html.DisplayFor(modelItem => item.Initiative.EngagementName)
                 </td>
                 <td>
                     <a asp-page="./Edit" asp-route-id="@item.NoteId">Edit</a> |

@@ -36,14 +36,14 @@
             @Html.DisplayFor(model => model.Note.CreateDate)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Note.NoteNavigation)
+            @Html.DisplayNameFor(model => model.Note.Initiative)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Note.NoteNavigation.Id)
+            @Html.DisplayFor(model => model.Note.Initiative.InitiativeId)
         </dd>
     </dl>
 </div>
 <div>
     <a asp-page="./Edit" asp-route-id="@Model.Note.NoteId">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="./Index" asp-route-id="@Model.Note.InitiativeId">Back to List</a>
 </div>

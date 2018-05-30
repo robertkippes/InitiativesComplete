@@ -14,16 +14,16 @@ namespace Initiatives.Models
 
         [Key]
         public int InitiativeId { get; set; }
-        [Display(Name = "Initiative Name")]
+        [Display(Name = "Name")]
         [DataType(DataType.Text)]
         public string EngagementName { get; set; }
-        [Display(Name = "Engagement Identifier")]
+        [Display(Name = "Identifier")]
         public string EngagementIdentifier { get; set; }
-        [Display(Name = "Engagement Type")]
+        [Display(Name = "Engagement")]
         public int? EngagementTypeId { get; set; }
-        [Display(Name = "Solution Type")]
+        [Display(Name = "Solution")]
         public int? SolutionTypeId { get; set; }
-        [Display(Name = "Deployment Location")]
+        [Display(Name = "Deployment")]
         public int? LocationId { get; set; }
         [Display(Name = "PHI")]
         public bool PHI { get; set; }
@@ -36,7 +36,7 @@ namespace Initiatives.Models
         [Display(Name = "Project Start")]
         [DataType(DataType.Date)]
         public DateTime? ProjectStartDate { get; set; }
-        [Display(Name = "ARB Date")]
+        [Display(Name = "ARB")]
         [DataType(DataType.Date)]
         public DateTime? ARBDate { get; set; }
         public int? Resource { get; set; }
@@ -51,11 +51,11 @@ namespace Initiatives.Models
         public DateTime? CompleteDate { get; set; }
         [Display(Name = "Location")]
         public Location LocationNavigation { get; set; }
-        [Display(Name = "Engagement Type")]
+        [Display(Name = "Engagement")]
         public EngagementType EngagementTypeNavigation { get; set; }
         [Display(Name = "Architect")]
         public Resource ResourceNavigation { get; set; }
-        [Display(Name = "Solution Type")]
+        [Display(Name = "Solution")]
         public SolutionType SolutionTypeNavigation { get; set; }
         [Display(Name = "Meta Tags")]
         public ICollection<InitiativeMetaTag> InitiativeMetaTag { get; set; }
@@ -63,6 +63,6 @@ namespace Initiatives.Models
         [Display(Name = "Facility")]
         public ICollection<InitiativeFacility> InitiativeFacility { get; set; }
         //[InverseProperty("NoteNavigation")]
-        public Note Note { get; set; }
+        public ICollection<Note> Note { get; set; }
     }
 }

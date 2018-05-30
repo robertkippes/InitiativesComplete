@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Initiatives;
 using Initiatives.Models;
 
-namespace EAInitiatives.Pages.Notes
+namespace Initiatives.Pages.Notes
 {
     public class DeleteModel : PageModel
     {

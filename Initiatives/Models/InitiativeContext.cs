@@ -256,10 +256,11 @@ namespace Initiatives.Models
                 entity.Property(e => e.CreateDate).HasDefaultValueSql("(getdate())");
 
                 entity.HasOne(d => d.Initiative)
-                    .WithOne(p => p.Note)
-                    .HasForeignKey<Note>(d => d.NoteId)
+                    .WithMany(p => p.Note)
+                    .HasForeignKey(d => d.InitiativeId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Note_Initiative");
+
                 entity.Property(e => e.IsActive)
                     .HasColumnType("bit");
             });

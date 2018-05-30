@@ -6,7 +6,17 @@
 }
 
 <h2>Index</h2>
-
+<form asp-page="./Index" method="get">
+    <div>
+        <p>
+            Find by name: <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            Include Deleted @Html.CheckBox("IncludeInactive", Model.IncludeDeleted)
+            <br />
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a asp-page="./Index">Back to full List</a>
+        </p>
+    </div>
+</form>
 <p>
     <a asp-page="Create">Create New</a>
 </p>
@@ -19,22 +29,7 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Initiative[0].EngagementIdentifier)
                 </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Initiative[0].PHI)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Initiative[0].PCI)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Initiative[0].UpStreamSystem)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Initiative[0].DownStreamSystem)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Initiative[0].ProjectStartDate)
-                </th>
-                <th>
+               <th>
                     @Html.DisplayNameFor(model => model.Initiative[0].ARBDate)
                 </th>
                 <th>
@@ -46,15 +41,7 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Initiative[0].CompleteDate)
                 </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Initiative[0].ModifiedUserName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Initiative[0].LastModifiedDate)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Initiative[0].IsActive)
-                </th>
+                
             <th>
                 @Html.DisplayNameFor(model => model.Initiative[0].EngagementTypeNavigation)
             </th>
@@ -80,21 +67,6 @@
                 @Html.DisplayFor(modelItem => item.EngagementIdentifier)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PHI)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PCI)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UpStreamSystem)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DownStreamSystem)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProjectStartDate)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.ARBDate)
             </td>
             <td>
@@ -106,27 +78,20 @@
             <td>
                 @Html.DisplayFor(modelItem => item.CompleteDate)
             </td>
+            
             <td>
-                @Html.DisplayFor(modelItem => item.ModifiedUserName)
+                @Html.DisplayFor(modelItem => item.EngagementTypeNavigation.EngagementTypeShortDescription)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.LastModifiedDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsActive)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EngagementTypeNavigation.EngagementTypeDescription)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LocationNavigation.LocationDescription)
+                @Html.DisplayFor(modelItem => item.LocationNavigation.LocationShortDescription)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ResourceNavigation.FirstName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.SolutionTypeNavigation.ModifiedUserName)
+                @Html.DisplayFor(modelItem => item.SolutionTypeNavigation.SolutionTypeShortDescription)
             </td>
+
             <td>
                 <a asp-page="/Notes/Index" asp-route-id="@item.InitiativeId">Notes</a>
                 <a asp-page="./Edit" asp-route-id="@item.InitiativeId">Edit</a> |
