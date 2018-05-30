@@ -46,6 +46,13 @@ namespace Initiatives.Models
                 item.CurrentValues["ModifiedUserName"] = WindowsIdentity.GetCurrent().Name;
                 item.CurrentValues["LastModifiedDate"] = DateTime.Now;
             }
+            //Set new items to active
+            foreach (var item in ChangeTracker.Entries()
+                .Where(e => e.State == EntityState.Added &&
+                            e.Metadata.GetProperties().Any(x => x.Name == "IsActive")))
+            {
+                item.CurrentValues["IsActive"] = true;
+            }
             return  await base.SaveChangesAsync();
         }
       
@@ -254,6 +261,7 @@ namespace Initiatives.Models
                 entity.Property(e => e.NoteId).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.CreateDate).HasDefaultValueSql("(getdate())");
+                
 
                 entity.HasOne(d => d.Initiative)
                     .WithMany(p => p.Note)

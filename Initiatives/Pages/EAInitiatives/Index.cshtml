@@ -10,10 +10,10 @@
     <div>
         <p>
             Find by name: <input type="text" name="SearchString" value="@Model.CurrentFilter" />
-            Include Deleted @Html.CheckBox("IncludeInactive", Model.IncludeDeleted)
+            <input type="submit" value="Search" class="btn btn-default" /> 
             <br />
-            <input type="submit" value="Search" class="btn btn-default" /> |
-            <a asp-page="./Index">Back to full List</a>
+            Include Deleted @Html.CheckBox("IncludeInactive", Model.IncludeDeleted)
+            
         </p>
     </div>
 </form>
@@ -93,7 +93,7 @@
             </td>
 
             <td>
-                <a asp-page="/Notes/Index" asp-route-id="@item.InitiativeId">Notes</a>
+                <a asp-page="/Notes/Index" asp-route-id="@item.InitiativeId">Notes</a> |
                 <a asp-page="./Edit" asp-route-id="@item.InitiativeId">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.InitiativeId">Details</a> |
                 <a asp-page="./Delete" asp-route-id="@item.InitiativeId">Delete</a>

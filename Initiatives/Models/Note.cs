@@ -9,12 +9,15 @@ namespace Initiatives.Models
         [Key]
         public int NoteId { get; set; }
         public int InitiativeId { get; set; }
-       [Required]
+        [Display(Name = "Notes:")]
+        [Required]
         [Column("Note")]
         public string Note1 { get; set; }
+        [Display(Name = "Created by")]
         [Required]
         [Column(TypeName = "nchar(150)")]
         public string UserName { get; set; }
+        [Display(Name = "Created Date")]
         [Column(TypeName = "datetime")]
         public DateTime CreateDate { get; set; }
         [ForeignKey("InitiativeId")]

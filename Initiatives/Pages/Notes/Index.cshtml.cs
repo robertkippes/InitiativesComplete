@@ -26,6 +26,7 @@ namespace Initiatives.Pages.Notes
         {
             Note = await _context.Note.Include(n => n.Initiative)
                 .Where(a => a.InitiativeId == id)
+                .Where(a => a.IsActive == true)
                 .AsNoTracking()
                 .ToListAsync();
            
