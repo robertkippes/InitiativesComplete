@@ -10,185 +10,181 @@
 <h4>Initiative</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Initiative.InitiativeId" />
-            <div class="form-group">
-                <label asp-for="Initiative.EngagementName" class="control-label"></label>
-                <input asp-for="Initiative.EngagementName" class="form-control" />
-                <span asp-validation-for="Initiative.EngagementName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Initiative.EngagementIdentifier" class="control-label"></label>
-                <input asp-for="Initiative.EngagementIdentifier" class="form-control" />
-                <span asp-validation-for="Initiative.EngagementIdentifier" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Initiative.EngagementTypeId" class="control-label"></label>
-                <select asp-for="Initiative.EngagementTypeId" class="form-control" asp-items="ViewBag.EngagementTypeId"></select>
-                <span asp-validation-for="Initiative.EngagementTypeId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Initiative.SolutionTypeId" class="control-label"></label>
-                <select asp-for="Initiative.SolutionTypeId" class="form-control" asp-items="ViewBag.SolutionTypeId"></select>
-                <span asp-validation-for="Initiative.SolutionTypeId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Initiative.LocationId" class="control-label"></label>
-                <select asp-for="Initiative.LocationId" class="form-control" asp-items="ViewBag.LocationId"></select>
-                <span asp-validation-for="Initiative.LocationId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="Initiative.PHI" /> @Html.DisplayNameFor(model => model.Initiative.PHI)
-                    </label>
+    <div class="col-lg-6 col-lg-offset-3">
+        <div class="well well-lg">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Initiative.InitiativeId" />
+                <div class="form-group">
+                    <label asp-for="Initiative.EngagementName" class="control-label"></label>
+                    <input asp-for="Initiative.EngagementName" class="form-control" />
+                    <span asp-validation-for="Initiative.EngagementName" class="text-danger"></span>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="Initiative.PCI" /> @Html.DisplayNameFor(model => model.Initiative.PCI)
-                    </label>
+                <div class="form-group">
+                    <label asp-for="Initiative.EngagementIdentifier" class="control-label"></label>
+                    <input asp-for="Initiative.EngagementIdentifier" class="form-control" />
+                    <span asp-validation-for="Initiative.EngagementIdentifier" class="text-danger"></span>
                 </div>
-            </div>
-            <div class="form-group">
-                <label asp-for="Initiative.UpStreamSystem" class="control-label"></label>
-                <input asp-for="Initiative.UpStreamSystem" class="form-control" />
-                <span asp-validation-for="Initiative.UpStreamSystem" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Initiative.DownStreamSystem" class="control-label"></label>
-                <input asp-for="Initiative.DownStreamSystem" class="form-control" />
-                <span asp-validation-for="Initiative.DownStreamSystem" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Initiative.ProjectStartDate" class="control-label"></label>
-                <input asp-for="Initiative.ProjectStartDate" class="form-control" />
-                <span asp-validation-for="Initiative.ProjectStartDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Initiative.ARBDate" class="control-label"></label>
-                <input asp-for="Initiative.ARBDate" class="form-control" />
-                <span asp-validation-for="Initiative.ARBDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Initiative.Resource" class="control-label"></label>
-                <select asp-for="Initiative.Resource" class="form-control" asp-items="ViewBag.Resource"></select>
-                <span asp-validation-for="Initiative.Resource" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Initiative.ReceiveDate" class="control-label"></label>
-                <input asp-for="Initiative.ReceiveDate" class="form-control" />
-                <span asp-validation-for="Initiative.ReceiveDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Initiative.StartDate" class="control-label"></label>
-                <input asp-for="Initiative.StartDate" class="form-control" />
-                <span asp-validation-for="Initiative.StartDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Initiative.CompleteDate" class="control-label"></label>
-                <input asp-for="Initiative.CompleteDate" class="form-control" />
-                <span asp-validation-for="Initiative.CompleteDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <table>
-                        <tr>
-                        @{
-                            int cnt = 0;
+                <div class="form-group">
+                    <label asp-for="Initiative.EngagementTypeId" class="control-label"></label>
+                    <select asp-for="Initiative.EngagementTypeId" class="form-control" asp-items="ViewBag.EngagementTypeId"></select>
+                    <span asp-validation-for="Initiative.EngagementTypeId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Initiative.SolutionTypeId" class="control-label"></label>
+                    <select asp-for="Initiative.SolutionTypeId" class="form-control" asp-items="ViewBag.SolutionTypeId"></select>
+                    <span asp-validation-for="Initiative.SolutionTypeId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Initiative.LocationId" class="control-label"></label>
+                    <select asp-for="Initiative.LocationId" class="form-control" asp-items="ViewBag.LocationId"></select>
+                    <span asp-validation-for="Initiative.LocationId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            <input asp-for="Initiative.PHI" /> @Html.DisplayNameFor(model => model.Initiative.PHI)
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            <input asp-for="Initiative.PCI" /> @Html.DisplayNameFor(model => model.Initiative.PCI)
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Initiative.UpStreamSystem" class="control-label"></label>
+                    <input asp-for="Initiative.UpStreamSystem" class="form-control" />
+                    <span asp-validation-for="Initiative.UpStreamSystem" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Initiative.DownStreamSystem" class="control-label"></label>
+                    <input asp-for="Initiative.DownStreamSystem" class="form-control" />
+                    <span asp-validation-for="Initiative.DownStreamSystem" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Initiative.ProjectStartDate" class="control-label"></label>
+                    <input asp-for="Initiative.ProjectStartDate" class="form-control" />
+                    <span asp-validation-for="Initiative.ProjectStartDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Initiative.ARBDate" class="control-label"></label>
+                    <input asp-for="Initiative.ARBDate" class="form-control" />
+                    <span asp-validation-for="Initiative.ARBDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Initiative.Resource" class="control-label"></label>
+                    <select asp-for="Initiative.Resource" class="form-control" asp-items="ViewBag.Resource"></select>
+                    <span asp-validation-for="Initiative.Resource" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Initiative.ReceiveDate" class="control-label"></label>
+                    <input asp-for="Initiative.ReceiveDate" class="form-control" />
+                    <span asp-validation-for="Initiative.ReceiveDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Initiative.StartDate" class="control-label"></label>
+                    <input asp-for="Initiative.StartDate" class="form-control" />
+                    <span asp-validation-for="Initiative.StartDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Initiative.CompleteDate" class="control-label"></label>
+                    <input asp-for="Initiative.CompleteDate" class="form-control" />
+                    <span asp-validation-for="Initiative.CompleteDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <table>
+                            <tr>
+                                @{
+                                    int cnt = 0;
 
-                            foreach (var business in Model.AssignedBusinessDataList)
-                            {
-                                if (cnt++ % 3 == 0)
-                                {
-                                    @:</tr><tr>
+                                    foreach (var business in Model.AssignedBusinessDataList)
+                                    {
+                                        if (cnt++ % 3 == 0)
+                                        {
+                                            @:</tr><tr>
+                                        }
+                                        @:<td><label asp-for="selectedBusiness">Business</label>
+                                            <input class="checkbox-inline"
+                                                   type="checkbox"
+                                                   name="selectedBusiness"
+                                                   value="@business.BusinessId"
+                                                   @(Html.Raw(business.Assigned ? "checked=\"checked\"" : "")) />
+                                            @business.BusinessDescription
+                                            @:</td>
+                                    }
+                                    @:</tr>
                                 }
-                                @:<td>
-                                <input type="checkbox"
-                                       name="selectedBusiness"
-                                       value="@business.BusinessId"
-                                       @(Html.Raw(business.Assigned ? "checked=\"checked\"" : "")) />
-                                @business.BusinessId @:  @business.BusinessDescription
-                                @:</td>
-                            }
-                            @:</tr>
-                        }
-                    </table>
+                            </table>
+                        </div>
+                    </div>
+                <div class="form-group">
+                        <div class="col-md-10">
+                            <table>
+                                <tr>
+                                    @{
+                                        cnt = 0;
+
+                                        foreach (var facility in Model.AssignedFacilityDataList)
+                                        {
+                                            if (cnt++ % 3 == 0)
+                                            {
+                                                @:</tr><tr>
+                                            }
+                                            @:<td><label asp-for="selectedFacilitys">Facility</label>
+                                                <input type="checkbox"
+                                                       name="selectedFacility"
+                                                       value="@facility.FacilityId"
+                                                       @(Html.Raw(facility.Assigned ? "checked=\"checked\"" : "")) />
+                                                @facility.FacilityDescription
+                                                @:</td>
+                                        }
+                                        @:</tr>
+                                    }
+                                </table>
+                            </div>
+                        </div>
+                <div class="form-group">
+                            <div class="col-md-10">
+                                <table>
+                                    <tr>
+                                        @{
+                                            cnt = 0;
+
+                                            foreach (var metaTag in Model.AssignedMetaTagDataList)
+                                            {
+                                                if (cnt++ % 3 == 0)
+                                                {
+                                                    @:</tr><tr>
+                                                }
+                                                @:<td><label asp-for="selectedMetaTags">Meta Tags</label>
+                                                    <input type="checkbox"
+                                                           name="selectedMetaTags"
+                                                           value="@metaTag.MetaTagId"
+                                                           @(Html.Raw(metaTag.Assigned ? "checked=\"checked\"" : "")) />
+                                                    @metaTag.MetaTagDescription
+                                                    @:</td>
+                                            }
+                                            @:</tr>
+                                        }
+                                    </table>
+                                </div>
+                            </div>
+                <div class="form-group">
+                                <input type="submit" value="Save" class="btn btn-primary btn-lg" />
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <table>
-                        <tr>
-                        @{
-                            cnt = 0;
-
-                            foreach (var facility in Model.AssignedFacilityDataList)
-                            {
-                                if (cnt++ % 3 == 0)
-                                {
-                                    @:</tr><tr>
-                                }
-                                @:<td>
-                                <input type="checkbox"
-                                       name="selectedFacility"
-                                       value="@facility.FacilityId"
-                                       @(Html.Raw(facility.Assigned ? "checked=\"checked\"" : "")) />
-                                @facility.FacilityId @:  @facility.FacilityDescription
-                                @:</td>
-                            }
-                            @:</tr>
-                        }
-                    </table>
-                </div>
+            
+           <div>
+                <a asp-page="./Index">Back to List</a>
             </div>
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <table>
-                        <tr>
-                        @{
-                            cnt = 0;
 
-                            foreach (var metaTag in Model.AssignedMetaTagDataList)
-                            {
-                                if (cnt++ % 3 == 0)
-                                {
-                                    @:</tr><tr>
-                                }
-                                @:<td>
-                                <input type="checkbox"
-                                       name="selectedMetaTags"
-                                       value="@metaTag.MetaTagId"
-                                       @(Html.Raw(metaTag.Assigned ? "checked=\"checked\"" : "")) />
-                                @metaTag.MetaTagId @:  @metaTag.MetaTagDescription
-                                @:</td>
-                            }
-                            @:</tr>
-                        }
-                    </table>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="Initiative.IsActive" /> @Html.DisplayNameFor(model => model.Initiative.IsActive)
-                    </label>
-                </div>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </form>
-    </div>
-</div>
-
-<div>
-    <a asp-page="./Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+            @section Scripts {
+                @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+            }
