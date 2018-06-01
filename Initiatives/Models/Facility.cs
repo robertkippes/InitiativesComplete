@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Initiatives.Models
 {
@@ -12,7 +13,13 @@ namespace Initiatives.Models
         }
         [Key]
         public int FacilityId { get; set; }
+        [Display(Name = "Short Description")]
+        [Required]
+        [StringLength(15, MinimumLength = 3)]
         public string FacilityShortDescription { get; set; }
+        [Display(Name = "Description")]
+        [Required]
+        [StringLength(25, MinimumLength = 3)]
         public string FacilityDescription { get; set; }
 
         public ICollection<InitiativeFacility> InitiativeFacility { get; set; }

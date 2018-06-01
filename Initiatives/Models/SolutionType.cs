@@ -12,8 +12,13 @@ namespace Initiatives.Models
         }
         [Key]
         public int SolutionTypeId { get; set; }
-        
+        [Display(Name = "Short Description")]
+        [Required]
+        [StringLength(15, MinimumLength = 3)]
         public string SolutionTypeShortDescription { get; set; }
+        [Display(Name = "Description")]
+        [Required]
+        [StringLength(25, MinimumLength = 3)]
         public string SolutionTypeDescription { get; set; }
         public ICollection<Initiative> Initiative { get; set; }
     }

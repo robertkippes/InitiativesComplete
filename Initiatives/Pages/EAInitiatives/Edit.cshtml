@@ -94,37 +94,45 @@
                     <input asp-for="Initiative.CompleteDate" class="form-control" />
                     <span asp-validation-for="Initiative.CompleteDate" class="text-danger"></span>
                 </div>
-                <div class="form-group">
-                    <div class="col-md-10">
-                        <table>
-                            <tr>
-                                @{
-                                    int cnt = 0;
 
-                                    foreach (var business in Model.AssignedBusinessDataList)
-                                    {
-                                        if (cnt++ % 3 == 0)
+                <div class="form-group">
+                        <div class="col-md-10">
+                            
+                            <table >
+                                <tr><td><label class="control-label">Business</label></td><td> </td>
+                                    @{
+                                        
+                                        int cnt = 0;
+
+
+                                        foreach (var business in Model.AssignedBusinessDataList)
                                         {
-                                            @:</tr><tr>
+                                            if (cnt++ % 3 == 0)
+                                            {
+                                               
+                                            }
+                                            @:<td>
+                                                <input class="checkbox-inline"
+                                                       type="checkbox"
+                                                       name="selectedBusiness"
+                                                       value="@business.BusinessId"
+                                                       @(Html.Raw(business.Assigned ? "checked=\"checked\"" : "")) />
+                                                @business.BusinessDescription
+                                                @:</td>
                                         }
-                                        @:<td><label asp-for="selectedBusiness">Business</label>
-                                            <input class="checkbox-inline"
-                                                   type="checkbox"
-                                                   name="selectedBusiness"
-                                                   value="@business.BusinessId"
-                                                   @(Html.Raw(business.Assigned ? "checked=\"checked\"" : "")) />
-                                            @business.BusinessDescription
-                                            @:</td>
+                                        @:</tr>
                                     }
-                                    @:</tr>
-                                }
-                            </table>
+                                </table>
+                            </div>
                         </div>
-                    </div>
+
+
+
+
                 <div class="form-group">
                         <div class="col-md-10">
                             <table>
-                                <tr>
+                                <tr><td><label class="control-label">Facilitys</label></td><td> </td>
                                     @{
                                         cnt = 0;
 
@@ -134,7 +142,7 @@
                                             {
                                                 @:</tr><tr>
                                             }
-                                            @:<td><label asp-for="selectedFacilitys">Facility</label>
+                                            @:<td>
                                                 <input type="checkbox"
                                                        name="selectedFacility"
                                                        value="@facility.FacilityId"
@@ -174,7 +182,7 @@
                                 </div>
                             </div>
                 <div class="form-group">
-                                <input type="submit" value="Save" class="btn btn-primary btn-lg" />
+                                <input type="submit" value="Save" class="btn btn-default btn-xs" />
                             </div>
                         </form>
                     </div>

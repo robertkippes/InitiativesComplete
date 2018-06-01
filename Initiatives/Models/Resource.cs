@@ -14,10 +14,10 @@ namespace Initiatives.Models
         public int ResourceId { get; set; }
        
         [Display(Name = "First Name")]
-        [DataType(DataType.Text)]
+        [StringLength(15, MinimumLength = 3)]
         public string FirstName { get; set; }
         [Display(Name = "Last Name")]
-        [DataType(DataType.Text)]
+        [StringLength(15, MinimumLength = 3)]
         public string LastName { get; set; }
         public ICollection<Initiative> Initiative { get; set; }
     }
