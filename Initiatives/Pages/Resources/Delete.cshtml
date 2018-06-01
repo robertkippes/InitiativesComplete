@@ -7,35 +7,43 @@
 
 <h2>Delete</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3 class="alert-danger">Are you sure you want to delete this?</h3>
 <div>
-    <h4>Resource</h4>
+    <h4>Architect</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Resource.FirstName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Resource.FirstName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Resource.LastName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Resource.ModifiedUserName)
-        </dd>
-        <dd>
-            @Html.DisplayFor(model => model.Resource.LastModifiedDate)
-        </dd>
-        <dd>
-            @Html.DisplayFor(model => model.Resource.IsActive)
-        </dd>
-    </dl>
-    
-    <form method="post">
-        <input type="hidden" asp-for="Resource.ResourceId" />
-      
-        <input type="submit" value="Delete" class="btn btn-default" />
+
+    <div class="row">
+        <div class="col-md-4 well">
+            <form method="post">
+                <input type="hidden" asp-for="Resource.ResourceId" />
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Resource.ResourceId" />
+                <div class="form-group">
+                    <label asp-for="Resource.FirstName" class="control-label"></label>
+                    <input asp-for="Resource.FirstName" class="form-control" readonly />
+                    <span asp-validation-for="Resource.FirstName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Resource.LastName" class="control-label"></label>
+                    <input asp-for="Resource.LastName" class="form-control" readonly />
+                    <span asp-validation-for="Resource.LastName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Delete" class="btn btn-default" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+       
         <a asp-page="./Index">Back to List</a>
-    </form>
+    
 </div>

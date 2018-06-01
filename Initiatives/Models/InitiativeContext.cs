@@ -178,6 +178,7 @@ namespace Initiatives.Models
                     .HasForeignKey(d => d.BusinessId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_InitiativeBusiness_Business");
+                //entity.HasQueryFilter(p => p.Business.IsActive); can do on an entity level but not a good idea since may hyave realtionshops
             });
 
             modelBuilder.Entity<InitiativeFacility>(entity =>

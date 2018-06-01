@@ -48,7 +48,7 @@ namespace Initiatives.Pages.EAInitiatives
             ViewData["EngagementTypeId"] = new SelectList(_context.EngagementType, "EngagementTypeId", "EngagementTypeDescription");
            ViewData["LocationId"] = new SelectList(_context.DeploymentLocation, "LocationId", "LocationDescription");
            ViewData["Resource"] = new SelectList(_context.Resource, "ResourceId", "FirstName");
-           ViewData["SolutionTypeId"] = new SelectList(_context.SolutionType, "SolutionTypeId", "ModifiedUserName");
+           ViewData["SolutionTypeId"] = new SelectList(_context.SolutionType, "SolutionTypeId", "SolutionTypeDescription");
             return Page();
         }
 

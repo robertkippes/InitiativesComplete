@@ -22,7 +22,14 @@ namespace Initiatives.Pages.Resources
 
         public async Task OnGetAsync()
         {
-            Resource = await _context.Resource.ToListAsync();
+            //Resource = await _context.Resource.ToListAsync();
+            IQueryable<Resource> resourceIq = from s in _context.Resource
+                                                          select s;
+            resourceIq = resourceIq.Where(s => s.IsActive).AsNoTracking();
+            Resource = await resourceIq
+                .OrderBy(i => i.LastModifiedDate)
+                .ToListAsync();
+
         }
     }
 }

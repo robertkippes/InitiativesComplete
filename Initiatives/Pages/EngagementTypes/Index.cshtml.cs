@@ -22,7 +22,13 @@ namespace Initiatives.Pages.EngagementTypes
 
         public async Task OnGetAsync()
         {
-            EngagementType = await _context.EngagementType.ToListAsync();
+            //EngagementType = await _context.EngagementType.ToListAsync();
+            IQueryable<EngagementType> engagementTypeIq = from s in _context.EngagementType
+                                                          select s;
+            engagementTypeIq = engagementTypeIq.Where(s => s.IsActive).AsNoTracking();
+            EngagementType = await engagementTypeIq
+                .OrderBy(i => i.LastModifiedDate)
+                .ToListAsync();
         }
     }
 }
