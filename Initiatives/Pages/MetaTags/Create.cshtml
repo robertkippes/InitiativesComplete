@@ -10,8 +10,8 @@
 <h4>MetaTag</h4>
 <hr />
 <div class="row">
-    <div class="col-lg-6 col-lg-offset-3">
-        <div class="well well-lg">
+    <div class="col-md-4 col-md-push-4">
+        <div class="well well-sm">
             <form method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
@@ -23,13 +23,6 @@
                     <label asp-for="MetaTag.MetaTagDescription" class="control-label"></label>
                     <input asp-for="MetaTag.MetaTagDescription" class="form-control" />
                     <span asp-validation-for="MetaTag.MetaTagDescription" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <div class="checkbox">
-                        <label>
-                            <input asp-for="MetaTag.IsActive" /> @Html.DisplayNameFor(model => model.MetaTag.IsActive)
-                        </label>
-                    </div>
                 </div>
                 <div class="form-group">
                     <input type="submit" value="Create" class="btn btn-default btn-xs" />
