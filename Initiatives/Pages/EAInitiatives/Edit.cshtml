@@ -15,6 +15,7 @@
             <form method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <input type="hidden" asp-for="Initiative.InitiativeId" />
+                <input type="hidden" asp-for="Initiative.IsActive" />
                 <div class="form-group">
                     <label asp-for="Initiative.EngagementName" class="control-label"></label>
                     <input asp-for="Initiative.EngagementName" class="form-control" />

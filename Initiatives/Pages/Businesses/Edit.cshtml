@@ -14,6 +14,7 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Business.BusinessId" />
+            <input type="hidden" asp-for="Business.IsActive" />
             <div class="form-group">
                 <label asp-for="Business.BusinessShortDescription" class="control-label"></label>
                 <input asp-for="Business.BusinessShortDescription" class="form-control" />

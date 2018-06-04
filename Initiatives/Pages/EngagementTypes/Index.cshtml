@@ -19,15 +19,7 @@
                 <th>
                     @Html.DisplayNameFor(model => model.EngagementType[0].EngagementTypeDescription)
                 </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.EngagementType[0].ModifiedUserName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.EngagementType[0].LastModifiedDate)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.EngagementType[0].IsActive)
-                </th>
+                
             <th></th>
         </tr>
     </thead>
@@ -35,24 +27,13 @@
 @foreach (var item in Model.EngagementType) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.EngagementTypeShortDescription)
+                <a asp-page="./Edit" asp-route-id="@item.EngagementTypeId">@Html.DisplayFor(modelItem => item.EngagementTypeShortDescription)</a>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.EngagementTypeDescription)
+                <a asp-page="./Edit" asp-route-id="@item.EngagementTypeId">@Html.DisplayFor(modelItem => item.EngagementTypeDescription)</a>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ModifiedUserName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastModifiedDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsActive)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.EngagementTypeId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.EngagementTypeId">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.EngagementTypeId">Delete</a>
+               <a asp-page="./Delete" asp-route-id="@item.EngagementTypeId">Delete</a>
             </td>
         </tr>
 }

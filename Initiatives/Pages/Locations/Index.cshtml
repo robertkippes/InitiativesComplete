@@ -19,15 +19,7 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Location[0].LocationDescription)
                 </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Location[0].ModifiedUserName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Location[0].LastModifiedDate)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Location[0].IsActive)
-                </th>
+                
             <th></th>
         </tr>
     </thead>
@@ -35,23 +27,12 @@
 @foreach (var item in Model.Location) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.LocationShortDescription)
+                <a asp-page="./Edit" asp-route-id="@item.LocationId"> @Html.DisplayFor(modelItem => item.LocationShortDescription)</a>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.LocationDescription)
+                <a asp-page="./Edit" asp-route-id="@item.LocationId"> @Html.DisplayFor(modelItem => item.LocationDescription)</a>
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ModifiedUserName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastModifiedDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsActive)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.LocationId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.LocationId">Details</a> |
+            <td> |
                 <a asp-page="./Delete" asp-route-id="@item.LocationId">Delete</a>
             </td>
         </tr>

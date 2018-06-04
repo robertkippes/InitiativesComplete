@@ -19,16 +19,7 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Facility[0].FacilityDescription)
                 </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Facility[0].ModifiedUserName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Facility[0].LastModifiedDate)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Facility[0].IsActive)
-                </th>
-            <th></th>
+                <th></th>
         </tr>
     </thead>
     <tbody>
@@ -41,17 +32,6 @@
                 @Html.DisplayFor(modelItem => item.FacilityDescription)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ModifiedUserName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastModifiedDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsActive)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.FacilityId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.FacilityId">Details</a> |
                 <a asp-page="./Delete" asp-route-id="@item.FacilityId">Delete</a>
             </td>
         </tr>

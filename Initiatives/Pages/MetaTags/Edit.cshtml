@@ -14,6 +14,7 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="MetaTag.MetaTagId" />
+            <input type="hidden" asp-for="MetaTag.IsActive" />
             <div class="form-group">
                 <label asp-for="MetaTag.MetaTagShortDescription" class="control-label"></label>
                 <input asp-for="MetaTag.MetaTagShortDescription" class="form-control" />
@@ -24,14 +25,7 @@
                 <input asp-for="MetaTag.MetaTagDescription" class="form-control" />
                 <span asp-validation-for="MetaTag.MetaTagDescription" class="text-danger"></span>
             </div>
-            
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="MetaTag.IsActive" /> @Html.DisplayNameFor(model => model.MetaTag.IsActive)
-                    </label>
-                </div>
-            </div>
+                     
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>

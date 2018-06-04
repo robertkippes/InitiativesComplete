@@ -14,9 +14,10 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Note.NoteId" />
+            <input type="hidden" asp-for="Note.IsActive" />
             <div class="form-group">
                 <label asp-for="Note.InitiativeId" class="control-label"></label>
-                <input asp-for="Note.InitiativeId" class="form-control" aria-readonly="true"/>
+                <input asp-for="Note.InitiativeId" class="form-control" aria-readonly="true" />
                 <span asp-validation-for="Note.InitiativeId" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -31,7 +32,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Note.CreateDate" class="control-label"></label>
-                <input asp-for="Note.CreateDate" class="form-control" aria-readonly="true"/>
+                <input asp-for="Note.CreateDate" class="form-control" aria-readonly="true" />
                 <span asp-validation-for="Note.CreateDate" class="text-danger"></span>
             </div>
             <div class="form-group">

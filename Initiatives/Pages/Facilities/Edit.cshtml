@@ -14,6 +14,7 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Facility.FacilityId" />
+            <input type="hidden" asp-for="Facility.IsActive" />
             <div class="form-group">
                 <label asp-for="Facility.FacilityShortDescription" class="control-label"></label>
                 <input asp-for="Facility.FacilityShortDescription" class="form-control" />
@@ -33,13 +34,6 @@
                 <label asp-for="Facility.LastModifiedDate" class="control-label"></label>
                 <input asp-for="Facility.LastModifiedDate" class="form-control" />
                 <span asp-validation-for="Facility.LastModifiedDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="Facility.IsActive" /> @Html.DisplayNameFor(model => model.Facility.IsActive)
-                    </label>
-                </div>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-default" />

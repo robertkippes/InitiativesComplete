@@ -19,15 +19,6 @@
                 <th>
                     @Html.DisplayNameFor(model => model.MetaTag[0].MetaTagDescription)
                 </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.MetaTag[0].ModifiedUserName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.MetaTag[0].LastModifiedDate)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.MetaTag[0].IsActive)
-                </th>
             <th></th>
         </tr>
     </thead>
@@ -35,23 +26,12 @@
 @foreach (var item in Model.MetaTag) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.MetaTagShortDescription)
+                <a asp-page="./Edit" asp-route-id="@item.MetaTagId">@Html.DisplayFor(modelItem => item.MetaTagShortDescription)</a>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.MetaTagDescription)
+                <a asp-page="./Edit" asp-route-id="@item.MetaTagId">@Html.DisplayFor(modelItem => item.MetaTagDescription)</a>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ModifiedUserName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastModifiedDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsActive)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.MetaTagId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.MetaTagId">Details</a> |
                 <a asp-page="./Delete" asp-route-id="@item.MetaTagId">Delete</a>
             </td>
         </tr>

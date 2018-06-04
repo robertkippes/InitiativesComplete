@@ -19,39 +19,18 @@
                 <th>
                     @Html.DisplayNameFor(model => model.SolutionType[0].SolutionTypeDescription)
                 </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.SolutionType[0].ModifiedUserName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.SolutionType[0].LastModifiedDate)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.SolutionType[0].IsActive)
-                </th>
-            <th></th>
+                <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model.SolutionType) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.SolutionTypeShortDescription)
-            </td>
+                <a asp-page="./Edit" asp-route-id="@item.SolutionTypeId">@Html.DisplayFor(modelItem => item.SolutionTypeShortDescription)</a></td>
             <td>
-                @Html.DisplayFor(modelItem => item.SolutionTypeDescription)
-            </td>
+                <a asp-page="./Edit" asp-route-id="@item.SolutionTypeId">@Html.DisplayFor(modelItem => item.SolutionTypeDescription)</a></td>
+            
             <td>
-                @Html.DisplayFor(modelItem => item.ModifiedUserName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastModifiedDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsActive)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.SolutionTypeId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.SolutionTypeId">Details</a> |
                 <a asp-page="./Delete" asp-route-id="@item.SolutionTypeId">Delete</a>
             </td>
         </tr>

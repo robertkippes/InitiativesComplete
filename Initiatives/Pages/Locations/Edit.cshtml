@@ -14,6 +14,7 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Location.LocationId" />
+            <input type="hidden" asp-for="Location.IsActive" />
             <div class="form-group">
                 <label asp-for="Location.LocationShortDescription" class="control-label"></label>
                 <input asp-for="Location.LocationShortDescription" class="form-control" />
@@ -24,14 +25,7 @@
                 <input asp-for="Location.LocationDescription" class="form-control" />
                 <span asp-validation-for="Location.LocationDescription" class="text-danger"></span>
             </div>
-            
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="Location.IsActive" /> @Html.DisplayNameFor(model => model.Location.IsActive)
-                    </label>
-                </div>
-            </div>
+                      
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>

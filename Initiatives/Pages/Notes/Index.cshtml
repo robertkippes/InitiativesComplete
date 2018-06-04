@@ -36,10 +36,7 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.InitiativeId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Note1)
+                    <a asp-page="./Edit" asp-route-id="@item.NoteId"> @Html.DisplayFor(modelItem => item.Note1)</a>
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.UserName)
@@ -51,8 +48,6 @@
                     @Html.DisplayFor(modelItem => item.Initiative.EngagementName)
                 </td>
                 <td>
-                    <a asp-page="./Edit" asp-route-id="@item.NoteId">Edit</a> |
-                    <a asp-page="./Details" asp-route-id="@item.NoteId">Details</a> |
                     <a asp-page="./Delete" asp-route-id="@item.NoteId">Delete</a>
                 </td>
             </tr>

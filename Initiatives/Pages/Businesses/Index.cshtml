@@ -26,15 +26,13 @@
 @foreach (var item in Model.Business) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.BusinessShortDescription)
+                <a asp-page="./Edit" asp-route-id="@item.BusinessId"> @Html.DisplayFor(modelItem => item.BusinessShortDescription)</a>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.BusinessDescription)
+                <a asp-page="./Edit" asp-route-id="@item.BusinessId">@Html.DisplayFor(modelItem => item.BusinessDescription)</a>
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.BusinessId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.BusinessId">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.BusinessId">Delete</a>
+               <a asp-page="./Delete" asp-route-id="@item.BusinessId">Delete</a>
             </td>
         </tr>
 }
