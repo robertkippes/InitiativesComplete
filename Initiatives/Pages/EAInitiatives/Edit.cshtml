@@ -95,105 +95,63 @@
                     <input asp-for="Initiative.CompleteDate" class="form-control" />
                     <span asp-validation-for="Initiative.CompleteDate" class="text-danger"></span>
                 </div>
-
-                <div class="form-group">
-                        <div class="col-md-10">
-                            
-                            <table >
-                                <tr><td><label class="control-label">Business</label></td><td> </td>
-                                    @{
-                                        
-                                        int cnt = 0;
-
-
-                                        foreach (var business in Model.AssignedBusinessDataList)
-                                        {
-                                            if (cnt++ % 3 == 0)
-                                            {
-                                               
-                                            }
-                                            @:<td>
-                                                <input class="checkbox-inline"
-                                                       type="checkbox"
-                                                       name="selectedBusiness"
-                                                       value="@business.BusinessId"
-                                                       @(Html.Raw(business.Assigned ? "checked=\"checked\"" : "")) />
-                                                @business.BusinessDescription
-                                                @:</td>
-                                        }
-                                        @:</tr>
-                                    }
-                                </table>
-                            </div>
-                        </div>
-
-
-
-
-                <div class="form-group">
-                        <div class="col-md-10">
-                            <table>
-                                <tr><td><label class="control-label">Facilitys</label></td><td> </td>
-                                    @{
-                                        cnt = 0;
-
-                                        foreach (var facility in Model.AssignedFacilityDataList)
-                                        {
-                                            if (cnt++ % 3 == 0)
-                                            {
-                                                @:</tr><tr>
-                                            }
-                                            @:<td>
-                                                <input type="checkbox"
-                                                       name="selectedFacility"
-                                                       value="@facility.FacilityId"
-                                                       @(Html.Raw(facility.Assigned ? "checked=\"checked\"" : "")) />
-                                                @facility.FacilityDescription
-                                                @:</td>
-                                        }
-                                        @:</tr>
-                                    }
-                                </table>
-                            </div>
-                        </div>
-                <div class="form-group">
-                            <div class="col-md-10">
-                                <table>
-                                    <tr>
-                                        @{
-                                            cnt = 0;
-
-                                            foreach (var metaTag in Model.AssignedMetaTagDataList)
-                                            {
-                                                if (cnt++ % 3 == 0)
-                                                {
-                                                    @:</tr><tr>
-                                                }
-                                                @:<td><label asp-for="selectedMetaTags">Meta Tags</label>
-                                                    <input type="checkbox"
-                                                           name="selectedMetaTags"
-                                                           value="@metaTag.MetaTagId"
-                                                           @(Html.Raw(metaTag.Assigned ? "checked=\"checked\"" : "")) />
-                                                    @metaTag.MetaTagDescription
-                                                    @:</td>
-                                            }
-                                            @:</tr>
-                                        }
-                                    </table>
-                                </div>
-                            </div>
-                <div class="form-group">
-                                <input type="submit" value="Save" class="btn btn-default btn-xs" />
-                            </div>
-                        </form>
-                    </div>
+                <div class="form-group" id="business">
+                    <label asp-for="Initiative.InitiativeBusiness" class="control-label"></label>
+                    <select name="selectedBusiness" multiple="multiple" size="1" class="form-control">
+                        @{
+                            foreach (var business in Model.AssignedBusinessDataList)
+                            {
+                                @:<option value="@business.BusinessId"
+                                          if (business.Assigned == true) { @: selected="selected"
+                                          } @:>
+                                    @business.BusinessDescription
+                                @:</option>
+                            }
+                        }
+                    </select>
                 </div>
-            </div>
-            
-           <div>
-                <a asp-page="./Index">Back to List</a>
-            </div>
+                <div class="form-group" id="facility">
+                    <label asp-for="Initiative.InitiativeFacility" class="control-label"></label>
+                    <select name="selectedFacility" multiple="multiple" size="1" class="form-control">
+                        @{
+                            foreach (var facility in Model.AssignedFacilityDataList)
+                            {
+                                @:<option value="@facility.FacilityId"
+                                          if (facility.Assigned == true) { @: selected="selected"
+                                          } @:>
+                                    @facility.FacilityDescription
+                                @:</option>
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="form-group" id="metaTag">
+                    <label asp-for="Initiative.InitiativeMetaTag"class="control-label"></label>
+                    <select name="selectedMetaTags" multiple="multiple" size="1" class="form-control">
+                        @{
+                            foreach (var metaTag in Model.AssignedMetaTagDataList)
+                            {
+                                @:<option value="@metaTag.MetaTagId"
+                                          if (metaTag.Assigned == true) { @: selected="selected"
+                                          } @:>
+                                    @metaTag.MetaTagDescription
+                                @:</option>
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-default btn-xs" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
-            @section Scripts {
-                @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-            }
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

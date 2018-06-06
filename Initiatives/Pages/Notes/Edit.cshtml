@@ -9,43 +9,40 @@
 
 <h4>Note</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Note.NoteId" />
-            <input type="hidden" asp-for="Note.IsActive" />
-            <div class="form-group">
-                <label asp-for="Note.InitiativeId" class="control-label"></label>
-                <input asp-for="Note.InitiativeId" class="form-control" aria-readonly="true" />
-                <span asp-validation-for="Note.InitiativeId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Note.Note1" class="control-label"></label>
-                <input asp-for="Note.Note1" class="form-control" />
-                <span asp-validation-for="Note.Note1" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Note.UserName" class="control-label"></label>
-                <input asp-for="Note.UserName" class="form-control" aria-readonly="true" />
-                <span asp-validation-for="Note.UserName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Note.CreateDate" class="control-label"></label>
-                <input asp-for="Note.CreateDate" class="form-control" aria-readonly="true" />
-                <span asp-validation-for="Note.CreateDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </form>
+<div class="row">    
+    <div class="col-md-4 col-md-push-4">
+        <div class="well well-sm">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Note.NoteId" />
+                <input type="hidden" asp-for="Note.IsActive" />
+                <div class="form-group">
+                    <label asp-for="Note.Note1" class="control-label"></label>
+                    <textarea  asp-for="Note.Note1" class="form-control" rows="5" cols="40"></textarea>
+                    <span asp-validation-for="Note.Note1" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Note.UserName" class="control-label"></label>
+                    <input asp-for="Note.UserName" class="form-control" aria-readonly="true" />
+                    <span asp-validation-for="Note.UserName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Note.CreateDate" class="control-label"></label>
+                    <input asp-for="Note.CreateDate" class="form-control" aria-readonly="true" />
+                    <span asp-validation-for="Note.CreateDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </form>
+        </div>
     </div>
-</div>
+        </div>
 
-<div>
-    <a asp-page="./Index">Back to List</a>
-</div>
+        <div>
+            <a asp-page="./Index">Back to List</a>
+        </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+        @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        }

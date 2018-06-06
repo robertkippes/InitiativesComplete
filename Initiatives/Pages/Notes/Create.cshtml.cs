@@ -22,7 +22,9 @@ namespace Initiatives.Pages.Notes
 
         public IActionResult OnGet(int id)
         {
+            var initiative = new Initiative();
             InitativeId = id;
+
                         //ViewData["NoteId"] = new SelectList(_context.Initiative, "Id", "Id");
 
             return Page();

@@ -11,7 +11,7 @@ namespace Initiatives.Models
     public class LastModified
     {
         [Display(Name = "Modified User")]
-        [Column(TypeName = "nchar(150)")]
+        [Column(TypeName = "varchar(150)")]
         public string ModifiedUserName { get; set; }
         [Display(Name = "Modified Date")]
         [DataType(DataType.Date)]

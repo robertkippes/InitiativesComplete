@@ -12,29 +12,25 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Note.InitiativeId" class="control-label"></label>
-                <input asp-for="Note.InitiativeId" class="form-control" value="@this.Model.InitativeId" readonly="readonly"/>
-                <span asp-validation-for="Note.InitiativeId" class="text-danger"></span>
-            </div>
+        <div class="well">
+            
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Note.InitiativeId" value="this."/>
+                <input type="hidden" asp-for="Note.UserName" value="@this.User.Identity.Name" />
+                @*<input type="hidden" asp-for="Note.IsActive" value=true/>*@
 
-            <div class="form-group">
-                <label asp-for="Note.Note1" class="control-label"></label>
-                <input asp-for="Note.Note1" class="form-control" />
-                <span asp-validation-for="Note.Note1" class="text-danger"></span>
+                <div class="form-group">
+                    <label asp-for="Note.Note1" class="control-label"></label>
+                    <textarea asp-for="Note.Note1" class="form-control" rows="5" cols="40"></textarea>
+                    <span asp-validation-for="Note.Note1" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-default btn-sm" />
+                </div>
+            </form>
             </div>
-            <div class="form-group">
-                <label asp-for="Note.UserName" class="control-label"></label>
-                <input asp-for="Note.UserName" class="form-control" value="@this.User.Identity.Name" readonly="readonly" />
-                <span asp-validation-for="Note.UserName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </form>
-    </div>
+        </div>
 </div>
 
 <div>

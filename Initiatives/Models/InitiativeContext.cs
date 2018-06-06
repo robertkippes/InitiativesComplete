@@ -64,11 +64,11 @@ namespace Initiatives.Models
             {
                 entity.Property(e => e.BusinessShortDescription)
                     .IsRequired()
-                    .HasColumnType("nchar(15)");
+                    .HasColumnType("varchar(15)");
 
                 entity.Property(e => e.BusinessDescription)
                     .IsRequired()
-                    .HasColumnType("nchar(25)");
+                    .HasColumnType("varchar(25)");
                 entity.Property(e => e.IsActive)
                     .HasColumnType("bit");
             });
@@ -77,11 +77,11 @@ namespace Initiatives.Models
             {
                 entity.Property(e => e.FacilityShortDescription)
                     .IsRequired()
-                    .HasColumnType("nchar(15)");
+                    .HasColumnType("varchar(15)");
 
                 entity.Property(e => e.FacilityDescription)
                     .IsRequired()
-                    .HasColumnType("nchar(25)");
+                    .HasColumnType("varchar(25)");
                 entity.Property(e => e.IsActive)
                     .HasColumnType("bit");
             });
@@ -90,11 +90,11 @@ namespace Initiatives.Models
             {
                 entity.Property(e => e.LocationShortDescription)
                     .IsRequired()
-                    .HasColumnType("nchar(15)");
+                    .HasColumnType("varchar(15)");
 
                 entity.Property(e => e.LocationDescription)
                     .IsRequired()
-                    .HasColumnType("nchar(25)");
+                    .HasColumnType("varchar(25)");
                 entity.Property(e => e.IsActive)
                     .HasColumnType("bit");
 
@@ -104,11 +104,11 @@ namespace Initiatives.Models
             {
                 entity.Property(e => e.EngagementTypeShortDescription)
                     .IsRequired()
-                    .HasColumnType("nchar(15)");
+                    .HasColumnType("varchar(15)");
 
                 entity.Property(e => e.EngagementTypeDescription)
                     .IsRequired()
-                    .HasColumnType("nchar(25)");
+                    .HasColumnType("varchar(25)");
                 entity.Property(e => e.IsActive)
                     .HasColumnType("bit");
             });
@@ -124,15 +124,15 @@ namespace Initiatives.Models
                 entity.Property(e => e.CompleteDate)
                     .HasColumnType("date");
                 entity.Property(e => e.DownStreamSystem)
-                    .HasColumnType("nchar(25)");
+                    .HasColumnType("varchar(25)");
                 entity.Property(e => e.PHI)
                     .HasColumnType("bit");
                 entity.Property(e => e.PCI)
                     .HasColumnType("bit");
                 entity.Property(e => e.EngagementIdentifier)
-                    .HasColumnType("nchar(15)");
+                    .HasColumnType("varchar(15)");
                 entity.Property(e => e.EngagementName)
-                    .HasColumnType("nchar(15)");
+                    .HasColumnType("varchar(15)");
                 entity.Property(e => e.ProjectStartDate)
                     .HasColumnType("date");
                 entity.Property(e => e.ReceiveDate)
@@ -140,7 +140,7 @@ namespace Initiatives.Models
                 entity.Property(e => e.StartDate)
                     .HasColumnType("date");
                 entity.Property(e => e.UpStreamSystem)
-                    .HasColumnType("nchar(25)");
+                    .HasColumnType("varchar(25)");
                entity.HasOne(d => d.LocationNavigation)
                     .WithMany(p => p.Initiative)
                     .HasForeignKey(d => d.LocationId)
@@ -223,11 +223,11 @@ namespace Initiatives.Models
 
                 entity.Property(e => e.MetaTagShortDescription)
                     .IsRequired()
-                   .HasColumnType("nchar(15)");
+                   .HasColumnType("varchar(15)");
 
                 entity.Property(e => e.MetaTagDescription)
                     .IsRequired()
-                    .HasColumnType("nchar(25)");
+                    .HasColumnType("varchar(25)");
                 entity.Property(e => e.IsActive)
                     .HasColumnType("bit");
             });
@@ -236,11 +236,11 @@ namespace Initiatives.Models
             {
                 entity.Property(e => e.FirstName)
                     .IsRequired()
-                    .HasColumnType("nchar(15)");
+                    .HasColumnType("varchar(15)");
 
                 entity.Property(e => e.LastName)
                     .IsRequired()
-                    .HasColumnType("nchar(15)");
+                    .HasColumnType("varchar(15)");
                 entity.Property(e => e.IsActive)
                     .HasColumnType("bit");
             });
@@ -249,11 +249,11 @@ namespace Initiatives.Models
             {
                 entity.Property(e => e.SolutionTypeShortDescription)
                     .IsRequired()
-                    .HasColumnType("nchar(15)");
+                    .HasColumnType("varchar(15)");
 
                 entity.Property(e => e.SolutionTypeDescription)
                     .IsRequired()
-                    .HasColumnType("nchar(25)");
+                    .HasColumnType("varchar(25)");
                 entity.Property(e => e.IsActive)
                     .HasColumnType("bit");
             });

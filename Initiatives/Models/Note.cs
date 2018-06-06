@@ -15,7 +15,7 @@ namespace Initiatives.Models
         public string Note1 { get; set; }
         [Display(Name = "Created by")]
         [Required]
-        [Column(TypeName = "nchar(150)")]
+        [Column(TypeName = "varchar(150)")]
         public string UserName { get; set; }
         [Display(Name = "Created Date")]
         [Column(TypeName = "datetime")]

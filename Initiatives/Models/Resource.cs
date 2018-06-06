@@ -19,6 +19,7 @@ namespace Initiatives.Models
         [Display(Name = "Last Name")]
         [StringLength(15, MinimumLength = 3)]
         public string LastName { get; set; }
+        public string PrincipalUserName { get; set; }
         public ICollection<Initiative> Initiative { get; set; }
     }
 }
