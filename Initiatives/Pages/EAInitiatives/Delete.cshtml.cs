@@ -1,15 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Initiatives.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Initiatives.Models;
+using System.Threading.Tasks;
 
 namespace Initiatives.Pages.EAInitiatives
 {
-    public class DeleteModel : PageModel
+    public class DeleteModel : InitiativePageModel
     {
         private readonly Initiatives.Models.InitiativeContext _context;
 
@@ -29,6 +27,9 @@ namespace Initiatives.Pages.EAInitiatives
             }
 
             Initiative = await _context.Initiative
+                .Include(i => i.InitiativeBusiness).ThenInclude(i => i.Business)
+                .Include(i => i.InitiativeFacility).ThenInclude(i => i.Facility)
+                .Include(i => i.InitiativeMetaTag).ThenInclude(i => i.MetaTag)
                 .Include(i => i.EngagementTypeNavigation)
                 .Include(i => i.LocationNavigation)
                 .Include(i => i.ResourceNavigation)
@@ -38,6 +39,13 @@ namespace Initiatives.Pages.EAInitiatives
             {
                 return NotFound();
             }
+            PopulateAssignedBusinessData(_context, Initiative);
+            PopulateAssignedFacilityData(_context, Initiative);
+            PopulateAssignedMetaTagData(_context, Initiative);
+            ViewData["EngagementTypeId"] = new SelectList(_context.EngagementType, "EngagementTypeId", "EngagementTypeDescription");
+            ViewData["LocationId"] = new SelectList(_context.DeploymentLocation, "LocationId", "LocationDescription");
+            ViewData["Resource"] = new SelectList(_context.Resource, "ResourceId", "FirstName");
+            ViewData["SolutionTypeId"] = new SelectList(_context.SolutionType, "SolutionTypeId", "SolutionTypeDescription");
             return Page();
         }
 

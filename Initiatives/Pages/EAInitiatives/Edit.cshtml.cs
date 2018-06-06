@@ -1,12 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Initiatives.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Initiatives.Models;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Initiatives.Pages.EAInitiatives
 {
@@ -46,9 +43,9 @@ namespace Initiatives.Pages.EAInitiatives
             PopulateAssignedFacilityData(_context, Initiative);
             PopulateAssignedMetaTagData(_context, Initiative);
             ViewData["EngagementTypeId"] = new SelectList(_context.EngagementType, "EngagementTypeId", "EngagementTypeDescription");
-           ViewData["LocationId"] = new SelectList(_context.DeploymentLocation, "LocationId", "LocationDescription");
-           ViewData["Resource"] = new SelectList(_context.Resource, "ResourceId", "FirstName");
-           ViewData["SolutionTypeId"] = new SelectList(_context.SolutionType, "SolutionTypeId", "SolutionTypeDescription");
+            ViewData["LocationId"] = new SelectList(_context.DeploymentLocation, "LocationId", "LocationDescription");
+            ViewData["Resource"] = new SelectList(_context.Resource, "ResourceId", "FirstName");
+            ViewData["SolutionTypeId"] = new SelectList(_context.SolutionType, "SolutionTypeId", "SolutionTypeDescription");
             return Page();
         }
 
@@ -71,7 +68,6 @@ namespace Initiatives.Pages.EAInitiatives
             UpdateInitiativeBusiness(_context, selectedBusiness, initiativeToUpdate);
             UpdateInitiativeFacility(_context, selectedFacility, initiativeToUpdate);
             UpdateInitiativeMetaTags(_context, selectedMetaTags, initiativeToUpdate);
-            
 
             try
             {

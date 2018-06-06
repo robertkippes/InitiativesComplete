@@ -61,10 +61,14 @@
 @foreach (var item in Model.Initiative) {
         <tr>
             <td>
+                <a asp-page="./Edit" asp-route-id="@item.InitiativeId"> 
                 @Html.DisplayFor(modelItem => item.EngagementName)
+                </a>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.EngagementIdentifier)
+                <a asp-page="./Edit" asp-route-id="@item.InitiativeId">
+                    @Html.DisplayFor(modelItem => item.EngagementIdentifier)
+                </a>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ARBDate)
@@ -94,8 +98,6 @@
 
             <td>
                 <a asp-page="/Notes/Index" asp-route-id="@item.InitiativeId">Notes</a> |
-                <a asp-page="./Edit" asp-route-id="@item.InitiativeId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.InitiativeId">Details</a> |
                 <a asp-page="./Delete" asp-route-id="@item.InitiativeId">Delete</a>
             </td>
         </tr>
