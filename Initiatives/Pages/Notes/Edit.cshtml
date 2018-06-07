@@ -14,11 +14,12 @@
         <div class="well well-sm">
             <form method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Note.InitiativeId" />
                 <input type="hidden" asp-for="Note.NoteId" />
-                <input type="hidden" asp-for="Note.IsActive" />
+                <input type="hidden" asp-for="Note.IsActive"/>
                 <div class="form-group">
                     <label asp-for="Note.Note1" class="control-label"></label>
-                    <textarea  asp-for="Note.Note1" class="form-control" rows="5" cols="40"></textarea>
+                    <textarea asp-for="Note.Note1" class="form-control" rows="5" cols="40"></textarea>
                     <span asp-validation-for="Note.Note1" class="text-danger"></span>
                 </div>
                 <div class="form-group">

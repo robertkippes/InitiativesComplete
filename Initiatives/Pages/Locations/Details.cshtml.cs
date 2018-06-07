@@ -27,7 +27,7 @@ namespace Initiatives.Pages.Locations
                 return NotFound();
             }
 
-            Location = await _context.DeploymentLocation.SingleOrDefaultAsync(m => m.LocationId == id);
+            Location = await _context.Location.SingleOrDefaultAsync(m => m.LocationId == id);
 
             if (Location == null)
             {

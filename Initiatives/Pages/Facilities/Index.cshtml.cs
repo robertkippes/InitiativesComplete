@@ -22,7 +22,13 @@ namespace Initiatives.Pages.Facilities
 
         public async Task OnGetAsync()
         {
-            Facility = await _context.Facility.ToListAsync();
+            //Facility = await _context.Facility.ToListAsync();
+            IQueryable<Facility> facilityIq = from s in _context.Facility
+                                                    select s;
+            facilityIq = facilityIq.Where(s => s.IsActive).AsNoTracking();
+            Facility = await facilityIq
+                .OrderBy(i => i.LastModifiedDate)
+                .ToListAsync();
         }
     }
 }

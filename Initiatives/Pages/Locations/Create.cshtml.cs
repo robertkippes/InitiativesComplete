@@ -33,7 +33,7 @@ namespace Initiatives.Pages.Locations
                 return Page();
             }
 
-            _context.DeploymentLocation.Add(Location);
+            _context.Location.Add(Location);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

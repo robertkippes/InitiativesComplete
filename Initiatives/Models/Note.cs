@@ -9,7 +9,7 @@ namespace Initiatives.Models
         [Key]
         public int NoteId { get; set; }
         public int InitiativeId { get; set; }
-        [Display(Name = "Notes:")]
+        [Display(Name = "Note")]
         [Required]
         [Column("Note")]
         public string Note1 { get; set; }
@@ -22,6 +22,6 @@ namespace Initiatives.Models
         public DateTime CreateDate { get; set; }
         [ForeignKey("InitiativeId")]
         [InverseProperty("Note")]
-        public Initiative Initiative { get; set; }
+        public Initiative InitiativeNavigation { get; set; }
     }
 }

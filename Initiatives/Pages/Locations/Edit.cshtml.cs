@@ -29,7 +29,7 @@ namespace Initiatives.Pages.Locations
                 return NotFound();
             }
 
-            Location = await _context.DeploymentLocation.SingleOrDefaultAsync(m => m.LocationId == id);
+            Location = await _context.Location.SingleOrDefaultAsync(m => m.LocationId == id);
 
             if (Location == null)
             {
@@ -68,7 +68,7 @@ namespace Initiatives.Pages.Locations
 
         private bool LocationExists(int id)
         {
-            return _context.DeploymentLocation.Any(e => e.LocationId == id);
+            return _context.Location.Any(e => e.LocationId == id);
         }
     }
 }

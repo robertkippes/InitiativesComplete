@@ -35,7 +35,7 @@ namespace Initiatives.Pages.EAInitiatives
 
             // Continue with one to one relationships
             ViewData["EngagementTypeId"] = new SelectList(_context.EngagementType, "EngagementTypeId", "EngagementTypeDescription");
-        ViewData["LocationId"] = new SelectList(_context.DeploymentLocation, "LocationId", "LocationDescription");
+        ViewData["LocationId"] = new SelectList(_context.Location, "LocationId", "LocationDescription");
         ViewData["Resource"] = new SelectList(_context.Resource, "ResourceId", "FirstName");
         ViewData["SolutionTypeId"] = new SelectList(_context.SolutionType, "SolutionTypeId", "ModifiedUserName");
             return Page();

@@ -24,10 +24,9 @@ namespace Initiatives.Pages.Notes
         //id is the Engagements ID
         public async Task OnGetAsync(int id)
         {
-            Note = await _context.Note.Include(n => n.Initiative)
+            Note = await _context.Note.Include(n => n.InitiativeNavigation)
                 .Where(a => a.InitiativeId == id)
                 .Where(a => a.IsActive == true)
-                .AsNoTracking()
                 .ToListAsync();
            
 

@@ -22,7 +22,12 @@ namespace Initiatives.Pages.Locations
 
         public async Task OnGetAsync()
         {
-            Location = await _context.DeploymentLocation.ToListAsync();
+            IQueryable<Location> locationIq = from s in _context.Location
+                                              select s;
+            locationIq = locationIq.Where(s => s.IsActive).AsNoTracking();
+            Location = await locationIq
+                .OrderBy(i => i.LastModifiedDate)
+                .ToListAsync();
         }
     }
 }

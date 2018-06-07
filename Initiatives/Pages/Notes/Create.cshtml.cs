@@ -25,7 +25,7 @@ namespace Initiatives.Pages.Notes
             var initiative = new Initiative();
             InitativeId = id;
 
-                        //ViewData["NoteId"] = new SelectList(_context.Initiative, "Id", "Id");
+           ViewData["NoteId"] = new SelectList(_context.Initiative, "Id", "Id");
 
             return Page();
         }
@@ -33,13 +33,13 @@ namespace Initiatives.Pages.Notes
         [BindProperty]
         public Note Note { get; set; }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int id)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
-
+            Note.InitiativeId = id;
             _context.Note.Add(Note);
             await _context.SaveChangesAsync();
 

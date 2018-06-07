@@ -22,7 +22,13 @@ namespace Initiatives.Pages.MetaTags
 
         public async Task OnGetAsync()
         {
-            MetaTag = await _context.MetaTag.ToListAsync();
+           // MetaTag = await _context.MetaTag.ToListAsync();
+            IQueryable<MetaTag> metaTagIq = from s in _context.MetaTag
+                                             select s;
+            metaTagIq = metaTagIq.Where(s => s.IsActive).AsNoTracking();
+            MetaTag = await metaTagIq
+                .OrderBy(i => i.LastModifiedDate)
+                .ToListAsync();
         }
     }
 }

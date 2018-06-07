@@ -14,7 +14,7 @@ namespace Initiatives.Models
     {
         public virtual DbSet<Business> Business { get; set; }
         public virtual DbSet<Facility> Facility { get; set; }
-        public virtual DbSet<Location> DeploymentLocation { get; set; }
+        public virtual DbSet<Location> Location { get; set; }
         public virtual DbSet<EngagementType> EngagementType { get; set; }
         public virtual DbSet<Initiative> Initiative { get; set; }
         public virtual DbSet<InitiativeMetaTag> InitiativeMetaTag { get; set; }
@@ -264,9 +264,9 @@ namespace Initiatives.Models
                 entity.Property(e => e.CreateDate).HasDefaultValueSql("(getdate())");
                 
 
-                entity.HasOne(d => d.Initiative)
+                entity.HasOne(d => d.InitiativeNavigation)
                     .WithMany(p => p.Note)
-                    .HasForeignKey(d => d.InitiativeId)
+                    .HasForeignKey(d => d.NoteId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Note_Initiative");
 

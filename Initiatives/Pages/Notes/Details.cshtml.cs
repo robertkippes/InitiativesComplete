@@ -29,7 +29,7 @@ namespace Initiatives.Pages.Notes
             }
 
             Note = await _context.Note
-                .Include(n => n.Initiative).SingleOrDefaultAsync(m => m.NoteId == id);
+                .Include(n => n.InitiativeNavigation).SingleOrDefaultAsync(m => m.NoteId == id);
 
             if (Note == null)
             {

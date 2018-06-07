@@ -30,8 +30,9 @@ namespace Initiatives.Pages.Notes
                 return NotFound();
             }
 
-            Note = await _context.Note
-                .Include(n => n.Initiative).SingleOrDefaultAsync(m => m.NoteId == id);
+              Note = await _context.Note
+                .Include(n => n.InitiativeNavigation)
+                .SingleOrDefaultAsync(m => m.NoteId == id);
 
             if (Note == null)
             {
@@ -66,7 +67,8 @@ namespace Initiatives.Pages.Notes
                 }
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("./Index", new { id = Note.InitiativeId });
+                //id, = Note.InitiativeId.ToString() );
         }
 
         private bool NoteExists(int id)
