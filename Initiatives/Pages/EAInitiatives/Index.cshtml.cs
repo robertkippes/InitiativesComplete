@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Initiatives.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Initiatives.Pages.EAInitiatives
 {
@@ -27,7 +28,7 @@ namespace Initiatives.Pages.EAInitiatives
             
             CurrentFilter = searchString;
             IncludeDeleted = includeInactive;
-            
+            ViewData["Resource"] = new SelectList(_context.Resource, "ResourceId", "FirstName");
 
             IQueryable<Initiative> initiativeIq = from s in _context.Initiative
                 select s;

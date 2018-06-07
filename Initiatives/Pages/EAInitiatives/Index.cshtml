@@ -6,42 +6,44 @@
 }
 
 <h2>Index</h2>
-<form asp-page="./Index" method="get">
-    <div>
-        <p>
-            Find by name: <input type="text" name="SearchString" value="@Model.CurrentFilter" />
-            <input type="submit" value="Search" class="btn btn-default" /> 
-            <br />
-            Include Deleted @Html.CheckBox("IncludeInactive", Model.IncludeDeleted)
-            
-        </p>
+<div class="row">
+    <div class="col-lg-4 col-lg-offset-1">
+        <div class="well well-sm">
+            <form asp-page="./Index" method="get" class="form-inline">
+                <div class="form-group-sm">
+                    Find by name: <input type="text" name="SearchString" value="@Model.CurrentFilter" class="form-control" />&nbsp
+                    <input type="submit" value="Search" class="btn btn-default btn-toolbar btn-xs" />
+                    Include Inactive @Html.CheckBox("IncludeInactive", Model.IncludeDeleted)
+                </div>
+            </form>
+        </div>
     </div>
-</form>
+</div>
 <p>
     <a asp-page="Create">Create New</a>
 </p>
 <table class="table">
     <thead>
         <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Initiative[0].EngagementName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Initiative[0].EngagementIdentifier)
-                </th>
-               <th>
-                    @Html.DisplayNameFor(model => model.Initiative[0].ARBDate)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Initiative[0].ReceiveDate)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Initiative[0].StartDate)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Initiative[0].CompleteDate)
-                </th>
-                
+            <th>
+                @Html.DisplayNameFor(model => model.Initiative[0].EngagementName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Initiative[0].EngagementIdentifier)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Initiative[0].ARBDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Initiative[0].ReceiveDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Initiative[0].StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Initiative[0].CompleteDate)
+            </th>
+
             <th>
                 @Html.DisplayNameFor(model => model.Initiative[0].EngagementTypeNavigation)
             </th>
@@ -58,49 +60,50 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Initiative) {
-        <tr>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.InitiativeId"> 
-                @Html.DisplayFor(modelItem => item.EngagementName)
-                </a>
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.InitiativeId">
-                    @Html.DisplayFor(modelItem => item.EngagementIdentifier)
-                </a>
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ARBDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ReceiveDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StartDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CompleteDate)
-            </td>
-            
-            <td>
-                @Html.DisplayFor(modelItem => item.EngagementTypeNavigation.EngagementTypeShortDescription)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LocationNavigation.LocationShortDescription)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ResourceNavigation.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SolutionTypeNavigation.SolutionTypeShortDescription)
-            </td>
+        @foreach (var item in Model.Initiative)
+        {
+            <tr>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.InitiativeId">
+                        @Html.DisplayFor(modelItem => item.EngagementName)
+                    </a>
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.InitiativeId">
+                        @Html.DisplayFor(modelItem => item.EngagementIdentifier)
+                    </a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ARBDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReceiveDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompleteDate)
+                </td>
 
-            <td>
-                <a asp-page="/Notes/Index" asp-route-id="@item.InitiativeId">Notes</a> |
-                <a asp-page="./Delete" asp-route-id="@item.InitiativeId">Delete</a>
-            </td>
-        </tr>
-}
+                <td>
+                    @Html.DisplayFor(modelItem => item.EngagementTypeNavigation.EngagementTypeShortDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LocationNavigation.LocationShortDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ResourceNavigation.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SolutionTypeNavigation.SolutionTypeShortDescription)
+                </td>
+
+                <td>
+                    <a asp-page="/Notes/Index" asp-route-id="@item.InitiativeId">Notes</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.InitiativeId">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

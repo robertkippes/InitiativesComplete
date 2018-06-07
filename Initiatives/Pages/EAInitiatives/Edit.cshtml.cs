@@ -53,9 +53,13 @@ namespace Initiatives.Pages.EAInitiatives
         {
             if (!ModelState.IsValid)
             {
-                return Page();
-            }
-
+                return Page();            }
+            
+            _context.Attach(Initiative).State = EntityState.Modified;
+            //This saves the parent Entity and onoe-many child relationships
+            await _context.SaveChangesAsync();
+            
+            //This saves the Masny-to-Many relationships
             var initiativeToUpdate = await _context.Initiative
                 .Include(i => i.InitiativeBusiness)
                 .ThenInclude(i => i.Business)
@@ -68,7 +72,7 @@ namespace Initiatives.Pages.EAInitiatives
             UpdateInitiativeBusiness(_context, selectedBusiness, initiativeToUpdate);
             UpdateInitiativeFacility(_context, selectedFacility, initiativeToUpdate);
             UpdateInitiativeMetaTags(_context, selectedMetaTags, initiativeToUpdate);
-
+            
             try
             {
                 await _context.SaveChangesAsync();
