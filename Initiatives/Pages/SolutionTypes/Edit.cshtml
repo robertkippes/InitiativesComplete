@@ -10,40 +10,35 @@
 <h4>SolutionType</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="SolutionType.SolutionTypeId" />
-            <input type="hidden" asp-for="SolutionType.IsActive" />
-            <div class="form-group">
-                <label asp-for="SolutionType.SolutionTypeShortDescription" class="control-label"></label>
-                <input asp-for="SolutionType.SolutionTypeShortDescription" class="form-control" />
-                <span asp-validation-for="SolutionType.SolutionTypeShortDescription" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SolutionType.SolutionTypeDescription" class="control-label"></label>
-                <input asp-for="SolutionType.SolutionTypeDescription" class="form-control" />
-                <span asp-validation-for="SolutionType.SolutionTypeDescription" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="SolutionType.IsActive" /> @Html.DisplayNameFor(model => model.SolutionType.IsActive)
-                    </label>
+    <div class="col-md-4 col-md-push-4">
+        <div class="well well-sm">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="SolutionType.SolutionTypeId" />
+                <input type="hidden" asp-for="SolutionType.IsActive" />
+                <div class="form-group">
+                    <label asp-for="SolutionType.SolutionTypeShortDescription" class="control-label"></label>
+                    <input asp-for="SolutionType.SolutionTypeShortDescription" class="form-control" />
+                    <span asp-validation-for="SolutionType.SolutionTypeShortDescription" class="text-danger"></span>
                 </div>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </form>
+                <div class="form-group">
+                    <label asp-for="SolutionType.SolutionTypeDescription" class="control-label"></label>
+                    <input asp-for="SolutionType.SolutionTypeDescription" class="form-control" />
+                    <span asp-validation-for="SolutionType.SolutionTypeDescription" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn btn-default btn-xs" />
+                </div>
+            </form>
+        </div>
     </div>
 </div>
+    <div>
+        <a asp-page="./Index">Back to List</a>
+    </div>
 
-<div>
-    <a asp-page="./Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

@@ -24,13 +24,7 @@
                     <input asp-for="SolutionType.SolutionTypeDescription" class="form-control" />
                     <span asp-validation-for="SolutionType.SolutionTypeDescription" class="text-danger"></span>
                 </div>
-                <div class="form-group">
-                    <div class="checkbox">
-                        <label>
-                            <input asp-for="SolutionType.IsActive" /> @Html.DisplayNameFor(model => model.SolutionType.IsActive)
-                        </label>
-                    </div>
-                </div>
+                
                 <div class="form-group">
                     <input type="submit" value="Create" class="btn btn-default btn-xs" />
                 </div>

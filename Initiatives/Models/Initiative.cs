@@ -16,7 +16,9 @@ namespace Initiatives.Models
         public int InitiativeId { get; set; }
         [Display(Name = "Name")]
         [DataType(DataType.Text)]
+        [StringLength(15, MinimumLength = 3)]
         public string EngagementName { get; set; }
+        [StringLength(15, MinimumLength = 3)]
         [Display(Name = "Identifier")]
         public string EngagementIdentifier { get; set; }
         [Display(Name = "Engagement")]
@@ -30,7 +32,9 @@ namespace Initiatives.Models
         [Display(Name = "PCI")]
         public bool PCI { get; set; }
         [Display(Name = "Upstream System")]
+        [StringLength(25, MinimumLength = 3)]
         public string UpStreamSystem { get; set; }
+        [StringLength(25, MinimumLength = 3)]
         [Display(Name = "Downstream System")]
         public string DownStreamSystem { get; set; }
         [Display(Name = "Project Start")]

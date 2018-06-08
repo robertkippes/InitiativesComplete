@@ -6,35 +6,36 @@
 }
 
 <h2>Index</h2>
-
+<h4>Facilities</h4>
 <p>
     <a asp-page="Create">Create New</a>
 </p>
 <table class="table">
     <thead>
         <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Facility[0].FacilityShortDescription)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Facility[0].FacilityDescription)
-                </th>
-                <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.Facility[0].FacilityShortDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Facility[0].FacilityDescription)
+            </th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Facility) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FacilityShortDescription)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FacilityDescription)
-            </td>
-            <td>
-                <a asp-page="./Delete" asp-route-id="@item.FacilityId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Facility)
+        {
+            <tr>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.FacilityId"> @Html.DisplayFor(modelItem => item.FacilityShortDescription)</a>
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.FacilityId"> @Html.DisplayFor(modelItem => item.FacilityDescription)</a>
+                </td>
+                <td>
+                    <a asp-page="./Delete" asp-route-id="@item.FacilityId">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
