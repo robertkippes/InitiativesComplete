@@ -53,7 +53,8 @@ namespace Initiatives.Pages.EAInitiatives
         {
             if (!ModelState.IsValid)
             {
-                return Page();            }
+                return Page();
+            }
             
             _context.Attach(Initiative).State = EntityState.Modified;
             //This saves the parent Entity and onoe-many child relationships

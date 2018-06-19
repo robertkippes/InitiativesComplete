@@ -28,6 +28,33 @@
                     <label asp-for="Initiative.EngagementTypeId" class="control-label"></label>
                     <select asp-for="Initiative.EngagementTypeId" class="form-control" asp-items="ViewBag.EngagementTypeId"></select>
                 </div>
+                <div class="form-group" id="business">
+                    <label asp-for="Initiative.InitiativeBusiness" class="control-label"></label>
+                    <select name="selectedBusiness" multiple="multiple" size="1" class="form-control">
+                        @{
+                            foreach (var business in Model.AssignedBusinessDataList)
+                            {
+                                @:<option value="@business.BusinessId">
+                                    @business.BusinessDescription
+                                @:</option>
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="form-group" id="metaTag">
+                    <label asp-for="Initiative.InitiativeMetaTag" class="control-label"></label>
+                    <select name="selectedMetaTags" multiple="multiple" size="1" class="form-control">
+                        @{
+                            foreach (var metaTag in Model.AssignedMetaTagDataList)
+                            {
+                                @:<option value="@metaTag.MetaTagId">
+                                    @metaTag.MetaTagDescription
+                                @:</option>
+                            }
+                        }
+                    </select>
+                </div>
+
                 <div class="form-group">
                     <label asp-for="Initiative.SolutionTypeId" class="control-label"></label>
                     <select asp-for="Initiative.SolutionTypeId" class="form-control" asp-items="ViewBag.SolutionTypeId"></select>
@@ -60,6 +87,29 @@
                     <input asp-for="Initiative.DownStreamSystem" class="form-control" />
                     <span asp-validation-for="Initiative.DownStreamSystem" class="text-danger"></span>
                 </div>
+                <div class="form-group" id="facility">
+                    <label asp-for="Initiative.InitiativeFacility" class="control-label"></label>
+                    <select name="selectedFacility" multiple="multiple" size="1" class="form-control">
+                        @{
+                            foreach (var facility in Model.AssignedFacilityDataList)
+                            {
+                                @:<option value="@facility.FacilityId">
+                                    @facility.FacilityDescription
+                                @:</option>
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Initiative.ReceiveDate" class="control-label"></label>
+                    <input asp-for="Initiative.ReceiveDate" class="form-control" />
+                    <span asp-validation-for="Initiative.ReceiveDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Initiative.StartDate" class="control-label"></label>
+                    <input asp-for="Initiative.StartDate" class="form-control" />
+                    <span asp-validation-for="Initiative.StartDate" class="text-danger"></span>
+                </div>
                 <div class="form-group">
                     <label asp-for="Initiative.ProjectStartDate" class="control-label"></label>
                     <input asp-for="Initiative.ProjectStartDate" class="form-control" />
@@ -75,64 +125,10 @@
                     <select asp-for="Initiative.Resource" class="form-control" asp-items="ViewBag.Resource"></select>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Initiative.ReceiveDate" class="control-label"></label>
-                    <input asp-for="Initiative.ReceiveDate" class="form-control" />
-                    <span asp-validation-for="Initiative.ReceiveDate" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Initiative.StartDate" class="control-label"></label>
-                    <input asp-for="Initiative.StartDate" class="form-control" />
-                    <span asp-validation-for="Initiative.StartDate" class="text-danger"></span>
-                </div>
-                <div class="form-group">
                     <label asp-for="Initiative.CompleteDate" class="control-label"></label>
                     <input asp-for="Initiative.CompleteDate" class="form-control" />
                     <span asp-validation-for="Initiative.CompleteDate" class="text-danger"></span>
                 </div>
-                <div class="form-group" id="business">
-                    <label asp-for="Initiative.InitiativeBusiness" class="control-label"></label>
-                    <select name="selectedBusiness" multiple="multiple" size="1" class="form-control">
-                        @{
-                            foreach (var business in Model.AssignedBusinessDataList)
-                            {
-                                @:<option value="@business.BusinessId">
-                                    @business.BusinessDescription
-                                @:</option>
-                            }
-                        }
-                    </select>
-                </div>
-                <div class="form-group" id="facility">
-                    <label asp-for="Initiative.InitiativeFacility" class="control-label"></label>
-                    <select name="selectedFacility" multiple="multiple" size="1" class="form-control">
-                        @{
-                            foreach (var facility in Model.AssignedFacilityDataList)
-                            {
-                                @:<option value="@facility.FacilityId">
-                                    @facility.FacilityDescription
-                                @:</option>
-                            }
-                        }
-                    </select>
-                </div>
-                <div class="form-group" id="metaTag">
-                    <label asp-for="Initiative.InitiativeMetaTag" class="control-label"></label>
-                    <select name="selectedMetaTags" multiple="multiple" size="1" class="form-control">
-                        @{
-                            foreach (var metaTag in Model.AssignedMetaTagDataList)
-                            {
-                                @:<option value="@metaTag.MetaTagId">
-                                    @metaTag.MetaTagDescription
-                                @:</option>
-                            }
-                        }
-                    </select>
-                </div>
-
-
-
-
-
                 <div class="form-group">
                     <input type="submit" value="Create" class="btn btn-default btn-xs" />
                 </div>
