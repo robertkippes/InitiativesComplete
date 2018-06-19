@@ -14,11 +14,11 @@ namespace Initiatives.Models
         public int LocationId { get; set; }
         [Display(Name = "Short Description")]
         [Required]
-        [StringLength(15, MinimumLength = 3)]
+        [StringLength(50, MinimumLength = 3)]
         public string LocationShortDescription { get; set; }
         [Display(Name = "Description")]
         [Required]
-        [StringLength(25, MinimumLength = 3)]
+        [StringLength(200, MinimumLength = 3)]
         public string LocationDescription { get; set; }
        public ICollection<Initiative> Initiative { get; set; }
     }

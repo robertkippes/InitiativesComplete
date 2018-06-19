@@ -14,11 +14,11 @@ namespace Initiatives.Models
         public int MetaTagId { get; set; }
         [Display(Name = "Short Description")]
         [Required]
-        [StringLength(15, MinimumLength = 3)]
+        [StringLength(50, MinimumLength = 3)]
         public string MetaTagShortDescription { get; set; }
         [Display(Name = "Description")]
         [Required]
-        [StringLength(25, MinimumLength = 3)]
+        [StringLength(200, MinimumLength = 3)]
         public string MetaTagDescription { get; set; }
         public ICollection<InitiativeMetaTag> InitiativeMetaTag { get; set; }
     }

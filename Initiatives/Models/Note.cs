@@ -20,6 +20,7 @@ namespace Initiatives.Models
         [Display(Name = "Created Date")]
         [Column(TypeName = "datetime")]
         public DateTime CreateDate { get; set; }
+        [Display(Name = "Initiative Name")]
         [ForeignKey("InitiativeId")]
         [InverseProperty("Note")]
         public Initiative InitiativeNavigation { get; set; }

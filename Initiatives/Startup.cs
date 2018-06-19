@@ -20,11 +20,11 @@ namespace Initiatives
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<InitiativeContext>(options =>
-                options.UseSqlServer("Data Source=ADA10614293;Initial Catalog=Initiatives;Integrated Security=True"));
+                options.UseSqlServer("Data Source=ADA10614293;Initial Catalog=Initiatives;User Id=Initiatives; Password=Initiative"));
             services.AddMvc();
         }
 

@@ -16,9 +16,9 @@ namespace Initiatives.Models
         public int InitiativeId { get; set; }
         [Display(Name = "Name")]
         [DataType(DataType.Text)]
-        [StringLength(15, MinimumLength = 3)]
+        [StringLength(200, MinimumLength = 3)]
         public string EngagementName { get; set; }
-        [StringLength(15, MinimumLength = 3)]
+        [StringLength(200, MinimumLength = 3)]
         [Display(Name = "Identifier")]
         public string EngagementIdentifier { get; set; }
         [Display(Name = "Engagement")]
@@ -32,9 +32,9 @@ namespace Initiatives.Models
         [Display(Name = "PCI")]
         public bool PCI { get; set; }
         [Display(Name = "Upstream System")]
-        [StringLength(25, MinimumLength = 3)]
+        [StringLength(200, MinimumLength = 3)]
         public string UpStreamSystem { get; set; }
-        [StringLength(25, MinimumLength = 3)]
+        [StringLength(200, MinimumLength = 3)]
         [Display(Name = "Downstream System")]
         public string DownStreamSystem { get; set; }
         [Display(Name = "Project Start")]
@@ -53,7 +53,7 @@ namespace Initiatives.Models
         [Display(Name = "EA Complete")]
         [DataType(DataType.Date)]
         public DateTime? CompleteDate { get; set; }
-        [Display(Name = "Location")]
+        [Display(Name = "Deployment")]
         public Location LocationNavigation { get; set; }
         [Display(Name = "Engagement")]
         public EngagementType EngagementTypeNavigation { get; set; }
@@ -63,7 +63,7 @@ namespace Initiatives.Models
         public SolutionType SolutionTypeNavigation { get; set; }
         [Display(Name = "Meta Tags")]
         public ICollection<InitiativeMetaTag> InitiativeMetaTag { get; set; }
-        [Display(Name = "Business")]
+        [Display(Name = "COE")]
         public ICollection<InitiativeBusiness> InitiativeBusiness { get; set; }
         [Display(Name = "Facility")]
         public ICollection<InitiativeFacility> InitiativeFacility { get; set; }

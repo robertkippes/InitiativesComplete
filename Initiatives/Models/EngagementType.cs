@@ -15,11 +15,11 @@ namespace Initiatives.Models
         public int EngagementTypeId { get; set; }
         [Display(Name = "Short Description")]
         [Required]
-        [StringLength(15, MinimumLength = 3)]
+        [StringLength(50, MinimumLength = 3)]
         public string EngagementTypeShortDescription { get; set; }
         [Display(Name = "Description")]
         [Required]
-        [StringLength(25, MinimumLength = 3)]
+        [StringLength(200, MinimumLength = 3)]
         public string EngagementTypeDescription { get; set; }
         public ICollection<Initiative> Initiative { get; set; }
     }
