@@ -33,6 +33,7 @@ namespace Initiatives.Pages.EAInitiatives
                 .Include(i => i.EngagementTypeNavigation)
                 .Include(i => i.LocationNavigation)
                 .Include(i => i.ResourceNavigation)
+                .Include(i => i.CurrentStatusNavigation)
                 .Include(i => i.SolutionTypeNavigation).SingleOrDefaultAsync(m => m.InitiativeId == id);
 
             if (Initiative == null)
@@ -46,6 +47,7 @@ namespace Initiatives.Pages.EAInitiatives
             ViewData["LocationId"] = new SelectList(_context.Location, "LocationId", "LocationDescription");
             ViewData["Resource"] = new SelectList(_context.Resource, "ResourceId", "FirstName");
             ViewData["SolutionTypeId"] = new SelectList(_context.SolutionType, "SolutionTypeId", "SolutionTypeDescription");
+            ViewData["CurrentStatusId"] = new SelectList(_context.CurrentStatus, "CurrentStatusId", "CurrentStatusDescription");
             return Page();
         }
 
@@ -57,7 +59,7 @@ namespace Initiatives.Pages.EAInitiatives
             }
             
             _context.Attach(Initiative).State = EntityState.Modified;
-            //This saves the parent Entity and onoe-many child relationships
+            //This saves the parent Entity and one-many child relationships
             await _context.SaveChangesAsync();
             
             //This saves the Masny-to-Many relationships

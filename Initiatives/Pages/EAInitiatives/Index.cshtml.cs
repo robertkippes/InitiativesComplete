@@ -83,6 +83,7 @@ namespace Initiatives.Pages.EAInitiatives
                 .Include(i => i.EngagementTypeNavigation)
                 .Include(i => i.ResourceNavigation)
                 .Include(i => i.SolutionTypeNavigation)
+                .Include(i => i.CurrentStatusNavigation)
                 .AsNoTracking();
 
             int pageSize = 3;

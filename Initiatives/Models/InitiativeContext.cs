@@ -164,7 +164,10 @@ namespace Initiatives.Models
                     .WithMany(p => p.Initiative)
                     .HasForeignKey(d => d.LocationId)
                     .HasConstraintName("FK_Initiative_Location");
-
+                entity.HasOne(d => d.CurrentStatusNavigation)
+                    .WithMany(p => p.Initiative)
+                    .HasForeignKey(d => d.CurrentStatusId)
+                    .HasConstraintName("FK_Initiative_CurrentStatus");
                 entity.HasOne(d => d.EngagementTypeNavigation)
                     .WithMany(p => p.Initiative)
                     .HasForeignKey(d => d.EngagementTypeId)

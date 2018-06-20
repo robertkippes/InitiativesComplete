@@ -41,6 +41,9 @@
             <th title="The Number from ServiceNow, N/A for Contract Review">
                 @Html.DisplayNameFor(model => model.Initiative[0].EngagementIdentifier)
             </th>
+            <th title="The Current Status of the Initiaitive">
+                @Html.DisplayNameFor(model => model.Initiative[0].CurrentStatusNavigation)
+            </th>
             <th title="The Date Initiaitive was Communucated to the EA Team">
                 @Html.DisplayNameFor(model => model.Initiative[0].ReceiveDate)
             </th>
@@ -79,75 +82,79 @@
     <tbody>
         @foreach (var item in Model.Initiative)
         {
-            <tr>
-                <td>
-                    <a asp-page="./Edit" asp-route-id="@item.InitiativeId">
-                        @Html.DisplayFor(modelItem => item.EngagementName)
-                    </a>
-                </td>
-                <td>
-                    <a asp-page="./Edit" asp-route-id="@item.InitiativeId">
-                        @Html.DisplayFor(modelItem => item.EngagementIdentifier)
-                    </a>
-                </td>
+        <tr>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.InitiativeId">
+                    @Html.DisplayFor(modelItem => item.EngagementName)
+                </a>
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.InitiativeId">
+                    @Html.DisplayFor(modelItem => item.EngagementIdentifier)
+                </a>
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.InitiativeId">
+                    @Html.DisplayFor(modelItem => item.CurrentStatusNavigation.CurrentStatusShortDescription)
+                </a>
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.InitiativeId">
 
-                <td>
-                    <a asp-page="./Edit" asp-route-id="@item.InitiativeId">
-
-                        @Html.DisplayFor(modelItem => item.ReceiveDate)
-                    </a>
-                </td>
-                <td>
-                    <a asp-page="./Edit" asp-route-id="@item.InitiativeId">
-                        @Html.DisplayFor(modelItem => item.StartDate)
-                    </a>
-                </td>
+                    @Html.DisplayFor(modelItem => item.ReceiveDate)
+                </a>
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.InitiativeId">
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </a>
+            </td>
 
 
-                <td>
-                    <a asp-page="./Edit" asp-route-id="@item.InitiativeId">
-                        @Html.DisplayFor(modelItem => item.EngagementTypeNavigation.EngagementTypeShortDescription)
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.InitiativeId">
+                    @Html.DisplayFor(modelItem => item.EngagementTypeNavigation.EngagementTypeShortDescription)
+                </a>
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.InitiativeId">
+                    @Html.DisplayFor(modelItem => item.LocationNavigation.LocationShortDescription)
+                </a>
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.InitiativeId">
+                    @Html.DisplayFor(modelItem => item.ResourceNavigation.FirstName)
+                </a>
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.InitiativeId">
+                    @Html.DisplayFor(modelItem => item.SolutionTypeNavigation.SolutionTypeShortDescription)
+                </a>
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.InitiativeId">
+                    @Html.DisplayFor(modelItem => item.ARBDate)
+                </a>
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.InitiativeId">
+                    @Html.DisplayFor(modelItem => item.CompleteDate)
+                </a>
+            </td>
+            <td>
+                <div class="text-nowrap">
+                    <a asp-page="/Notes/Index" asp-route-id="@item.InitiativeId" title="Notes">
+                        <img src="~/images/Action-edit-icon.png" height="18" width="18" />
+                    </a>&nbsp <!-- The Space shows Up under the cursor when selecting the hyperlink -->
+                    <a asp-page="./Delete" asp-route-id="@item.InitiativeId" title="Delete">
+                        <img src="~/images/delete-icon.png" height="18" width="18" />
+                    </a>&nbsp
+                    <a asp-page="Create" title="New">
+                        <img src="~/images/add-icon.png" height="18" width="18" />
                     </a>
-                </td>
-                <td>
-                    <a asp-page="./Edit" asp-route-id="@item.InitiativeId">
-                        @Html.DisplayFor(modelItem => item.LocationNavigation.LocationShortDescription)
-                    </a>
-                </td>
-                <td>
-                    <a asp-page="./Edit" asp-route-id="@item.InitiativeId">
-                        @Html.DisplayFor(modelItem => item.ResourceNavigation.FirstName)
-                    </a>
-                </td>
-                <td>
-                    <a asp-page="./Edit" asp-route-id="@item.InitiativeId">
-                        @Html.DisplayFor(modelItem => item.SolutionTypeNavigation.SolutionTypeShortDescription)
-                    </a>
-                </td>
-                <td>
-                    <a asp-page="./Edit" asp-route-id="@item.InitiativeId">
-                        @Html.DisplayFor(modelItem => item.ARBDate)
-                    </a>
-                </td>
-                <td>
-                    <a asp-page="./Edit" asp-route-id="@item.InitiativeId">
-                        @Html.DisplayFor(modelItem => item.CompleteDate)
-                    </a>
-                </td>
-                <td>
-                    <div class="text-nowrap">
-                        <a asp-page="/Notes/Index" asp-route-id="@item.InitiativeId" title="Notes">
-                            <img src="~/images/Action-edit-icon.png" height="18" width="18" />
-                        </a>&nbsp <!-- The Space shows Up under the cursor when selecting the hyperlink -->
-                        <a asp-page="./Delete" asp-route-id="@item.InitiativeId" title="Delete">
-                            <img src="~/images/delete-icon.png" height="18" width="18" />
-                        </a>&nbsp
-                        <a asp-page="Create" title="New">
-                            <img src="~/images/add-icon.png" height="18" width="18" />
-                        </a>
-                    </div>
-                </td>
-            </tr>
+                </div>
+            </td>
+        </tr>
         }
     </tbody>
 </table>

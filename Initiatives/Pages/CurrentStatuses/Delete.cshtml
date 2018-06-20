@@ -1,0 +1,52 @@
+﻿@page
+
+@model Initiatives.Pages.CurrentStatuses.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this (Mark Inactive)?</h3>
+<div>
+    <h4>Current Status</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CurrentStatus.CurrentStatusShortDescription)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CurrentStatus.CurrentStatusShortDescription)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CurrentStatus.CurrentStatusDescription)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CurrentStatus.CurrentStatusDescription)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CurrentStatus.ModifiedUserName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CurrentStatus.ModifiedUserName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CurrentStatus.LastModifiedDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CurrentStatus.LastModifiedDate)
+        </dd>
+        <dt>
+
+        </dt>
+        <dd>
+            <form method="post">
+                <input type="hidden" asp-for="CurrentStatus.CurrentStatusId" />
+                <input type="submit" value="Delete" class="btn-default btn-xs" />
+            </form>
+        </dd>
+    </dl>
+    <a asp-page="./Index">Back to List</a>
+
+</div>

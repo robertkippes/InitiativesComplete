@@ -23,6 +23,8 @@ namespace Initiatives.Models
         public string EngagementIdentifier { get; set; }
         [Display(Name = "Engagement")]
         public int? EngagementTypeId { get; set; }
+        [Display(Name = "CurrentStatus")]
+        public int? CurrentStatusId { get; set; }
         [Display(Name = "Solution")]
         public int? SolutionTypeId { get; set; }
         [Display(Name = "Deployment")]
@@ -61,6 +63,8 @@ namespace Initiatives.Models
         public Resource ResourceNavigation { get; set; }
         [Display(Name = "Solution")]
         public SolutionType SolutionTypeNavigation { get; set; }
+        [Display(Name = "Status")]
+        public CurrentStatus CurrentStatusNavigation { get; set; }
         [Display(Name = "Meta Tags")]
         public ICollection<InitiativeMetaTag> InitiativeMetaTag { get; set; }
         [Display(Name = "COE")]

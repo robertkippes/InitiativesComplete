@@ -35,9 +35,11 @@ namespace Initiatives.Pages.EAInitiatives
 
             // Continue with one to one relationships
             ViewData["EngagementTypeId"] = new SelectList(_context.EngagementType, "EngagementTypeId", "EngagementTypeDescription");
-        ViewData["LocationId"] = new SelectList(_context.Location, "LocationId", "LocationDescription");
-        ViewData["Resource"] = new SelectList(_context.Resource, "ResourceId", "FirstName");
-        ViewData["SolutionTypeId"] = new SelectList(_context.SolutionType, "SolutionTypeId", "SolutionTypeDescription");
+            ViewData["LocationId"] = new SelectList(_context.Location, "LocationId", "LocationDescription");
+            ViewData["Resource"] = new SelectList(_context.Resource, "ResourceId", "FirstName");
+            ViewData["SolutionTypeId"] = new SelectList(_context.SolutionType, "SolutionTypeId", "SolutionTypeDescription");
+            ViewData["CurrentStatusId"] = new SelectList(_context.CurrentStatus, "CurrentStatusId", "CurrentStatusDescription");
+
             return Page();
         }
 
@@ -95,7 +97,7 @@ namespace Initiatives.Pages.EAInitiatives
                     newInitiative.InitiativeMetaTag.Add(initiativeMetaTagToAdd);
                 }
             }
-            
+
             // Add Facility
             //the method of updating below is used as a security measure and to prevent over posting
             if (await TryUpdateModelAsync<Initiative>(
@@ -105,6 +107,7 @@ namespace Initiatives.Pages.EAInitiatives
                 i => i.EngagementName,
                 i => i.EngagementIdentifier,
                 i => i.EngagementTypeId,
+                i => i.CurrentStatusId,
                 i => i.SolutionTypeId,
                 i => i.LocationId,
                 i => i.PHI,
