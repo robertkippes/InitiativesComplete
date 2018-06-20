@@ -19,6 +19,7 @@ namespace Initiatives.Models
         /// This is list of COEs
         /// </summary>
         public virtual DbSet<Business> Business { get; set; }
+        public virtual DbSet<CurrentStatus> CurrentStatus { get; set; }
         public virtual DbSet<Facility> Facility { get; set; }
         public virtual DbSet<Location> Location { get; set; }
         public virtual DbSet<EngagementType> EngagementType { get; set; }
@@ -270,6 +271,18 @@ namespace Initiatives.Models
                     .HasColumnType("varchar(max)");
 
                 entity.Property(e => e.SolutionTypeDescription)
+                    .IsRequired()
+                    .HasColumnType("varchar(max)");
+                entity.Property(e => e.IsActive)
+                    .HasColumnType("bit");
+            });
+            modelBuilder.Entity<CurrentStatus>(entity =>
+            {
+                entity.Property(e => e.CurrentStatusDescription)
+                    .IsRequired()
+                    .HasColumnType("varchar(max)");
+
+                entity.Property(e => e.CurrentStatustShortDescription)
                     .IsRequired()
                     .HasColumnType("varchar(max)");
                 entity.Property(e => e.IsActive)

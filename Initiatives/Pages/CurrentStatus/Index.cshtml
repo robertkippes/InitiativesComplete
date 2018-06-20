@@ -1,0 +1,40 @@
+@page
+@model Initiatives.Pages.Businesses.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+<h4>Centers of Excellence (COEs)</h4>
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th >
+                    @Html.DisplayNameFor(model => model.Business[0].BusinessShortDescription)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Business[0].BusinessDescription)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Business) {
+        <tr>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.BusinessId"> @Html.DisplayFor(modelItem => item.BusinessShortDescription)</a>
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.BusinessId">@Html.DisplayFor(modelItem => item.BusinessDescription)</a>
+            </td>
+            <td>
+               <a asp-page="./Delete" asp-route-id="@item.BusinessId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
