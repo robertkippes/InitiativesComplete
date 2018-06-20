@@ -34,41 +34,41 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
-                
+            <th title="Name of Engagement from ServiceNow or BSF Contract Subject">
                 @Html.DisplayNameFor(model => model.Initiative[0].EngagementName)
-               
+
             </th>
-            <th>
+            <th title="The Number from ServiceNow, N/A for Contract Review">
                 @Html.DisplayNameFor(model => model.Initiative[0].EngagementIdentifier)
             </th>
-
-            <th>
+            <th title="The Date Initiaitive was Communucated to the EA Team">
                 @Html.DisplayNameFor(model => model.Initiative[0].ReceiveDate)
             </th>
-            <th>
+            <th title="The Date the Architect Started the Initiative">
                 <div class="text-nowrap">
-                    @Html.DisplayNameFor(model => model.Initiative[0].StartDate)
+                    <a asp-page="./Index" asp-route-sortOrder="@Model.DateSort">
+                        @Html.DisplayNameFor(model => model.Initiative[0].StartDate)
+                    </a>
                 </div>
             </th>
-
-
-            <th>
+            <th title="Engagement Type from Service Now or BSF Contract Review">
                 @Html.DisplayNameFor(model => model.Initiative[0].EngagementTypeNavigation)
             </th>
-            <th>
+            <th title="Technology Deplopyment Location">
                 @Html.DisplayNameFor(model => model.Initiative[0].LocationNavigation)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Initiative[0].ResourceNavigation)
+            <th title="Enterprise Architecture Team Member">
+                <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort">
+                    @Html.DisplayNameFor(model => model.Initiative[0].ResourceNavigation)
+                </a>
             </th>
-            <th>
+            <th title="The Initiative's Type of Technnology, Solution Type">
                 @Html.DisplayNameFor(model => model.Initiative[0].SolutionTypeNavigation)
             </th>
-            <th>
+            <th title="Date Initiative Presented or Re-Presentated at the Architure Review Board Meeting(ARB)">
                 @Html.DisplayNameFor(model => model.Initiative[0].ARBDate)
             </th>
-            <th>
+            <th title="Date EA has Completed all Task for the Initiative">
                 <div class="text-nowrap">
                     @Html.DisplayNameFor(model => model.Initiative[0].CompleteDate)
                 </div>
@@ -93,6 +93,7 @@
 
                 <td>
                     <a asp-page="./Edit" asp-route-id="@item.InitiativeId">
+
                         @Html.DisplayFor(modelItem => item.ReceiveDate)
                     </a>
                 </td>
@@ -153,7 +154,8 @@
 
 
 <p>
-    @{ if (Model.Initiative.Count == 0) {
+    @{ if (Model.Initiative.Count == 0)
+        {
             <a asp-page="Create" title="New">
                 <img src="~/images/add-icon.png" height="18" width="18" />
             </a>
@@ -161,3 +163,22 @@
     }
 
 </p>
+@{
+    var prevDisabled = !Model.Initiative.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.Initiative.HasNextPage ? "disabled" : "";
+}
+
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.Initiative.PageIndex - 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.Initiative.PageIndex + 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>
