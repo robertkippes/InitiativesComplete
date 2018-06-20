@@ -1,13 +1,13 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Initiatives.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using Initiatives.Models;
 
-namespace Initiatives.Pages.Businesses
+namespace Initiatives.Pages.CurrentStatuses
 {
     public class IndexModel : PageModel
     {
@@ -18,23 +18,16 @@ namespace Initiatives.Pages.Businesses
             _context = context;
         }
 
-        public IList<Business> Business { get;set; }
+        public IList<CurrentStatus> CurrentStatus { get; set; }
 
         public async Task OnGetAsync()
         {
-            
-
-            IQueryable<Business> businessIq = from s in _context.Business
-                                                  select s;
-            businessIq= businessIq.Where(s => s.IsActive);
-            Business = await businessIq
+            IQueryable<CurrentStatus> currentStatusIq = from s in _context.CurrentStatus
+                                              select s;
+            currentStatusIq = currentStatusIq.Where(s => s.IsActive).AsNoTracking();
+            CurrentStatus = await currentStatusIq
                 .OrderBy(i => i.LastModifiedDate)
                 .ToListAsync();
-
-            
-
-
-            
         }
     }
 }

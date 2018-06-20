@@ -282,7 +282,7 @@ namespace Initiatives.Models
                     .IsRequired()
                     .HasColumnType("varchar(max)");
 
-                entity.Property(e => e.CurrentStatustShortDescription)
+                entity.Property(e => e.CurrentStatusShortDescription)
                     .IsRequired()
                     .HasColumnType("varchar(max)");
                 entity.Property(e => e.IsActive)
