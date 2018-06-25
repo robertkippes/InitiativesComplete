@@ -25,6 +25,8 @@ namespace Initiatives.Models
         public int? EngagementTypeId { get; set; }
         [Display(Name = "CurrentStatus")]
         public int? CurrentStatusId { get; set; }
+        [Display(Name = "EA Involvement")]
+        public int? EAInvolvementId { get; set; }
         [Display(Name = "Solution")]
         public int? SolutionTypeId { get; set; }
         [Display(Name = "Deployment")]
@@ -57,6 +59,8 @@ namespace Initiatives.Models
         public DateTime? CompleteDate { get; set; }
         [Display(Name = "Deployment")]
         public Location LocationNavigation { get; set; }
+        [Display(Name = "EA Involvement")]
+        public EAInvolvement EAInvolvementNavigation { get; set; }
         [Display(Name = "Engagement")]
         public EngagementType EngagementTypeNavigation { get; set; }
         [Display(Name = "Architect")]

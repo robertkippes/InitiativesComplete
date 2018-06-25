@@ -1,0 +1,42 @@
+﻿@page
+@model Initiatives.Pages.EAInvolvements.EditModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>EA Involvement</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4 col-md-push-4">
+        <div class="well well-sm">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="EAInvolvement.EAInvolvementId" />
+                <input type="hidden" asp-for="EAInvolvement.IsActive" />
+                <div class="form-group">
+                    <label asp-for="EAInvolvement.EAInvolvementShortDescription" class="control-label"></label>
+                    <input asp-for="EAInvolvement.EAInvolvementShortDescription" class="form-control" />
+                    <span asp-validation-for="EAInvolvement.EAInvolvementShortDescription" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="EAInvolvement.EAInvolvementDescription" class="control-label"></label>
+                    <input asp-for="EAInvolvement.EAInvolvementDescription" class="form-control" />
+                    <span asp-validation-for="EAInvolvement.EAInvolvementDescription" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-default btn-xs" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

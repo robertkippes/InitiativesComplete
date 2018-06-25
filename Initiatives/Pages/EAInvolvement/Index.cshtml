@@ -1,0 +1,43 @@
+﻿@page
+@model Initiatives.Pages.EAInvolvements.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+<h4>Deployment EAInvolvements</h4>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EAInvolvement[0].EAInvolvementShortDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EAInvolvement[0].EAInvolvementDescription)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.EAInvolvement)
+        {
+            <tr>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.EAInvolvementId"> @Html.DisplayFor(modelItem => item.EAInvolvementShortDescription)</a>
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.EAInvolvementId"> @Html.DisplayFor(modelItem => item.EAInvolvementDescription)</a>
+                </td>
+                <td>
+                    <a asp-page="./Delete" asp-route-id="@item.EAInvolvementId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -30,7 +30,9 @@ namespace Initiatives.Models
         public virtual DbSet<MetaTag> MetaTag { get; set; }
         public virtual DbSet<Resource> Resource { get; set; }
         public virtual DbSet<SolutionType> SolutionType { get; set; }
+        public virtual DbSet<EAInvolvement> EAInvolvement { get; set; }
         public virtual DbSet<Note> Note { get; set; }
+        
         public InitiativeContext(DbContextOptions<InitiativeContext> options)
                 : base(options)
         {
@@ -172,7 +174,11 @@ namespace Initiatives.Models
                     .WithMany(p => p.Initiative)
                     .HasForeignKey(d => d.EngagementTypeId)
                     .HasConstraintName("FK_Initiative_EngagementType");
-
+                //EAInvolvementId
+                entity.HasOne(d => d.EAInvolvementNavigation)
+                    .WithMany(p => p.Initiative)
+                    .HasForeignKey(d => d.EAInvolvementId)
+                    .HasConstraintName("FK_Initiative_EAInvolvement");
                 entity.HasOne(d => d.ResourceNavigation)
                     .WithMany(p => p.Initiative)
                     .HasForeignKey(d => d.Resource)
@@ -253,6 +259,20 @@ namespace Initiatives.Models
                 entity.Property(e => e.IsActive)
                     .HasColumnType("bit");
             });
+          
+            modelBuilder.Entity<EAInvolvement>(entity =>
+            {
+                entity.Property(e => e.EAInvolvementShortDescription)
+                    .IsRequired()
+                    .HasColumnType("varchar(max)");
+
+                entity.Property(e => e.EAInvolvementDescription)
+                    .IsRequired()
+                    .HasColumnType("varchar(max)");
+                entity.Property(e => e.IsActive)
+                    .HasColumnType("bit");
+            });
+
 
             modelBuilder.Entity<Resource>(entity =>
             {
