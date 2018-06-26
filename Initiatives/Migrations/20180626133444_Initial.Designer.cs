@@ -11,7 +11,7 @@ using System;
 namespace Initiatives.Migrations
 {
     [DbContext(typeof(InitiativeContext))]
-    [Migration("20180525184857_Initial")]
+    [Migration("20180626133444_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,11 +28,13 @@ namespace Initiatives.Migrations
 
                     b.Property<string>("BusinessDescription")
                         .IsRequired()
-                        .HasColumnType("nchar(25)");
+                        .HasColumnType("varchar(max)")
+                        .HasMaxLength(200);
 
                     b.Property<string>("BusinessShortDescription")
                         .IsRequired()
-                        .HasColumnType("nchar(15)");
+                        .HasColumnType("varchar(max)")
+                        .HasMaxLength(50);
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -40,11 +42,67 @@ namespace Initiatives.Migrations
                     b.Property<DateTime>("LastModifiedDate");
 
                     b.Property<string>("ModifiedUserName")
-                        .HasColumnType("nchar(150)");
+                        .HasColumnType("varchar(150)");
 
                     b.HasKey("BusinessId");
 
-                    b.ToTable("Businesses");
+                    b.ToTable("Business");
+                });
+
+            modelBuilder.Entity("Initiatives.Models.CurrentStatus", b =>
+                {
+                    b.Property<int>("CurrentStatusId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("CurrentStatusDescription")
+                        .IsRequired()
+                        .HasColumnType("varchar(max)")
+                        .HasMaxLength(200);
+
+                    b.Property<string>("CurrentStatusShortDescription")
+                        .IsRequired()
+                        .HasColumnType("varchar(max)")
+                        .HasMaxLength(50);
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("LastModifiedDate");
+
+                    b.Property<string>("ModifiedUserName")
+                        .HasColumnType("varchar(150)");
+
+                    b.HasKey("CurrentStatusId");
+
+                    b.ToTable("CurrentStatus");
+                });
+
+            modelBuilder.Entity("Initiatives.Models.EAInvolvement", b =>
+                {
+                    b.Property<int>("EAInvolvementId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("EAInvolvementDescription")
+                        .IsRequired()
+                        .HasColumnType("varchar(max)")
+                        .HasMaxLength(200);
+
+                    b.Property<string>("EAInvolvementShortDescription")
+                        .IsRequired()
+                        .HasColumnType("varchar(max)")
+                        .HasMaxLength(50);
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("LastModifiedDate");
+
+                    b.Property<string>("ModifiedUserName")
+                        .HasColumnType("varchar(150)");
+
+                    b.HasKey("EAInvolvementId");
+
+                    b.ToTable("EAInvolvement");
                 });
 
             modelBuilder.Entity("Initiatives.Models.EngagementType", b =>
@@ -54,11 +112,13 @@ namespace Initiatives.Migrations
 
                     b.Property<string>("EngagementTypeDescription")
                         .IsRequired()
-                        .HasColumnType("nchar(25)");
+                        .HasColumnType("varchar(max)")
+                        .HasMaxLength(200);
 
                     b.Property<string>("EngagementTypeShortDescription")
                         .IsRequired()
-                        .HasColumnType("nchar(15)");
+                        .HasColumnType("varchar(max)")
+                        .HasMaxLength(50);
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -66,7 +126,7 @@ namespace Initiatives.Migrations
                     b.Property<DateTime>("LastModifiedDate");
 
                     b.Property<string>("ModifiedUserName")
-                        .HasColumnType("nchar(150)");
+                        .HasColumnType("varchar(150)");
 
                     b.HasKey("EngagementTypeId");
 
@@ -80,11 +140,13 @@ namespace Initiatives.Migrations
 
                     b.Property<string>("FacilityDescription")
                         .IsRequired()
-                        .HasColumnType("nchar(25)");
+                        .HasColumnType("varchar(max)")
+                        .HasMaxLength(200);
 
                     b.Property<string>("FacilityShortDescription")
                         .IsRequired()
-                        .HasColumnType("nchar(15)");
+                        .HasColumnType("varchar(max)")
+                        .HasMaxLength(50);
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -92,7 +154,7 @@ namespace Initiatives.Migrations
                     b.Property<DateTime>("LastModifiedDate");
 
                     b.Property<string>("ModifiedUserName")
-                        .HasColumnType("nchar(150)");
+                        .HasColumnType("varchar(150)");
 
                     b.HasKey("FacilityId");
 
@@ -111,14 +173,21 @@ namespace Initiatives.Migrations
                     b.Property<DateTime?>("CompleteDate")
                         .HasColumnType("date");
 
+                    b.Property<int?>("CurrentStatusId");
+
                     b.Property<string>("DownStreamSystem")
-                        .HasColumnType("nchar(25)");
+                        .HasColumnType("varchar(max)")
+                        .HasMaxLength(200);
+
+                    b.Property<int?>("EAInvolvementId");
 
                     b.Property<string>("EngagementIdentifier")
-                        .HasColumnType("nchar(15)");
+                        .HasColumnType("varchar(max)")
+                        .HasMaxLength(200);
 
                     b.Property<string>("EngagementName")
-                        .HasColumnType("nchar(15)");
+                        .HasColumnType("varchar(max)")
+                        .HasMaxLength(200);
 
                     b.Property<int?>("EngagementTypeId");
 
@@ -130,7 +199,7 @@ namespace Initiatives.Migrations
                     b.Property<int?>("LocationId");
 
                     b.Property<string>("ModifiedUserName")
-                        .HasColumnType("nchar(150)");
+                        .HasColumnType("varchar(150)");
 
                     b.Property<bool>("PCI")
                         .HasColumnType("bit");
@@ -152,9 +221,14 @@ namespace Initiatives.Migrations
                         .HasColumnType("date");
 
                     b.Property<string>("UpStreamSystem")
-                        .HasColumnType("nchar(25)");
+                        .HasColumnType("varchar(max)")
+                        .HasMaxLength(200);
 
                     b.HasKey("InitiativeId");
+
+                    b.HasIndex("CurrentStatusId");
+
+                    b.HasIndex("EAInvolvementId");
 
                     b.HasIndex("EngagementTypeId");
 
@@ -218,18 +292,20 @@ namespace Initiatives.Migrations
 
                     b.Property<string>("LocationDescription")
                         .IsRequired()
-                        .HasColumnType("nchar(25)");
+                        .HasColumnType("varchar(max)")
+                        .HasMaxLength(200);
 
                     b.Property<string>("LocationShortDescription")
                         .IsRequired()
-                        .HasColumnType("nchar(15)");
+                        .HasColumnType("varchar(max)")
+                        .HasMaxLength(50);
 
                     b.Property<string>("ModifiedUserName")
-                        .HasColumnType("nchar(150)");
+                        .HasColumnType("varchar(150)");
 
                     b.HasKey("LocationId");
 
-                    b.ToTable("DeploymentLocation");
+                    b.ToTable("Location");
                 });
 
             modelBuilder.Entity("Initiatives.Models.MetaTag", b =>
@@ -244,14 +320,16 @@ namespace Initiatives.Migrations
 
                     b.Property<string>("MetaTagDescription")
                         .IsRequired()
-                        .HasColumnType("nchar(25)");
+                        .HasColumnType("varchar(max)")
+                        .HasMaxLength(200);
 
                     b.Property<string>("MetaTagShortDescription")
                         .IsRequired()
-                        .HasColumnType("nchar(15)");
+                        .HasColumnType("varchar(max)")
+                        .HasMaxLength(50);
 
                     b.Property<string>("ModifiedUserName")
-                        .HasColumnType("nchar(150)");
+                        .HasColumnType("varchar(150)");
 
                     b.HasKey("MetaTagId");
 
@@ -276,7 +354,7 @@ namespace Initiatives.Migrations
                     b.Property<DateTime>("LastModifiedDate");
 
                     b.Property<string>("ModifiedUserName")
-                        .HasColumnType("nchar(150)");
+                        .HasColumnType("varchar(150)");
 
                     b.Property<string>("Note1")
                         .IsRequired()
@@ -284,7 +362,7 @@ namespace Initiatives.Migrations
 
                     b.Property<string>("UserName")
                         .IsRequired()
-                        .HasColumnType("nchar(150)");
+                        .HasColumnType("varchar(150)");
 
                     b.HasKey("NoteId");
 
@@ -298,7 +376,8 @@ namespace Initiatives.Migrations
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasColumnType("nchar(15)");
+                        .HasColumnType("varchar(max)")
+                        .HasMaxLength(50);
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -307,10 +386,13 @@ namespace Initiatives.Migrations
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasColumnType("nchar(15)");
+                        .HasColumnType("varchar(max)")
+                        .HasMaxLength(50);
 
                     b.Property<string>("ModifiedUserName")
-                        .HasColumnType("nchar(150)");
+                        .HasColumnType("varchar(150)");
+
+                    b.Property<string>("PrincipalUserName");
 
                     b.HasKey("ResourceId");
 
@@ -328,15 +410,17 @@ namespace Initiatives.Migrations
                     b.Property<DateTime>("LastModifiedDate");
 
                     b.Property<string>("ModifiedUserName")
-                        .HasColumnType("nchar(150)");
+                        .HasColumnType("varchar(150)");
 
                     b.Property<string>("SolutionTypeDescription")
                         .IsRequired()
-                        .HasColumnType("nchar(25)");
+                        .HasColumnType("varchar(max)")
+                        .HasMaxLength(200);
 
                     b.Property<string>("SolutionTypeShortDescription")
                         .IsRequired()
-                        .HasColumnType("nchar(15)");
+                        .HasColumnType("varchar(max)")
+                        .HasMaxLength(50);
 
                     b.HasKey("SolutionTypeId");
 
@@ -345,6 +429,16 @@ namespace Initiatives.Migrations
 
             modelBuilder.Entity("Initiatives.Models.Initiative", b =>
                 {
+                    b.HasOne("Initiatives.Models.CurrentStatus", "CurrentStatusNavigation")
+                        .WithMany("Initiative")
+                        .HasForeignKey("CurrentStatusId")
+                        .HasConstraintName("FK_Initiative_CurrentStatus");
+
+                    b.HasOne("Initiatives.Models.EAInvolvement", "EAInvolvementNavigation")
+                        .WithMany("Initiative")
+                        .HasForeignKey("EAInvolvementId")
+                        .HasConstraintName("FK_Initiative_EAInvolvement");
+
                     b.HasOne("Initiatives.Models.EngagementType", "EngagementTypeNavigation")
                         .WithMany("Initiative")
                         .HasForeignKey("EngagementTypeId")
@@ -407,9 +501,9 @@ namespace Initiatives.Migrations
 
             modelBuilder.Entity("Initiatives.Models.Note", b =>
                 {
-                    b.HasOne("Initiatives.Models.Initiative", "Initiative")
-                        .WithOne("Note")
-                        .HasForeignKey("Initiatives.Models.Note", "NoteId")
+                    b.HasOne("Initiatives.Models.Initiative", "InitiativeNavigation")
+                        .WithMany("Note")
+                        .HasForeignKey("NoteId")
                         .HasConstraintName("FK_Note_Initiative");
                 });
 #pragma warning restore 612, 618
