@@ -10,37 +10,54 @@ namespace Initiatives.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Businesses",
+                name: "Business",
                 columns: table => new
                 {
                     BusinessId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    BusinessDescription = table.Column<string>(type: "nchar(25)", nullable: false),
-                    BusinessShortDescription = table.Column<string>(type: "nchar(15)", nullable: false),
+                    BusinessDescription = table.Column<string>(type: "varchar(max)", maxLength: 200, nullable: false),
+                    BusinessShortDescription = table.Column<string>(type: "varchar(max)", maxLength: 50, nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     LastModifiedDate = table.Column<DateTime>(nullable: false),
-                    ModifiedUserName = table.Column<string>(type: "nchar(150)", nullable: true)
+                    ModifiedUserName = table.Column<string>(type: "varchar(150)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Businesses", x => x.BusinessId);
+                    table.PrimaryKey("PK_Business", x => x.BusinessId);
                 });
 
             migrationBuilder.CreateTable(
-                name: "DeploymentLocation",
+                name: "CurrentStatus",
                 columns: table => new
                 {
-                    LocationId = table.Column<int>(nullable: false)
+                    CurrentStatusId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    CurrentStatusDescription = table.Column<string>(type: "varchar(max)", maxLength: 200, nullable: false),
+                    CurrentStatusShortDescription = table.Column<string>(type: "varchar(max)", maxLength: 50, nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     LastModifiedDate = table.Column<DateTime>(nullable: false),
-                    LocationDescription = table.Column<string>(type: "nchar(25)", nullable: false),
-                    LocationShortDescription = table.Column<string>(type: "nchar(15)", nullable: false),
-                    ModifiedUserName = table.Column<string>(type: "nchar(150)", nullable: true)
+                    ModifiedUserName = table.Column<string>(type: "varchar(150)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DeploymentLocation", x => x.LocationId);
+                    table.PrimaryKey("PK_CurrentStatus", x => x.CurrentStatusId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "EAInvolvement",
+                columns: table => new
+                {
+                    EAInvolvementId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    EAInvolvementDescription = table.Column<string>(type: "varchar(max)", maxLength: 200, nullable: false),
+                    EAInvolvementShortDescription = table.Column<string>(type: "varchar(max)", maxLength: 50, nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    LastModifiedDate = table.Column<DateTime>(nullable: false),
+                    ModifiedUserName = table.Column<string>(type: "varchar(150)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EAInvolvement", x => x.EAInvolvementId);
                 });
 
             migrationBuilder.CreateTable(
@@ -49,11 +66,11 @@ namespace Initiatives.Migrations
                 {
                     EngagementTypeId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    EngagementTypeDescription = table.Column<string>(type: "nchar(25)", nullable: false),
-                    EngagementTypeShortDescription = table.Column<string>(type: "nchar(15)", nullable: false),
+                    EngagementTypeDescription = table.Column<string>(type: "varchar(max)", maxLength: 200, nullable: false),
+                    EngagementTypeShortDescription = table.Column<string>(type: "varchar(max)", maxLength: 50, nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     LastModifiedDate = table.Column<DateTime>(nullable: false),
-                    ModifiedUserName = table.Column<string>(type: "nchar(150)", nullable: true)
+                    ModifiedUserName = table.Column<string>(type: "varchar(150)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -66,15 +83,32 @@ namespace Initiatives.Migrations
                 {
                     FacilityId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    FacilityDescription = table.Column<string>(type: "nchar(25)", nullable: false),
-                    FacilityShortDescription = table.Column<string>(type: "nchar(15)", nullable: false),
+                    FacilityDescription = table.Column<string>(type: "varchar(max)", maxLength: 200, nullable: false),
+                    FacilityShortDescription = table.Column<string>(type: "varchar(max)", maxLength: 50, nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     LastModifiedDate = table.Column<DateTime>(nullable: false),
-                    ModifiedUserName = table.Column<string>(type: "nchar(150)", nullable: true)
+                    ModifiedUserName = table.Column<string>(type: "varchar(150)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Facility", x => x.FacilityId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Location",
+                columns: table => new
+                {
+                    LocationId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    LastModifiedDate = table.Column<DateTime>(nullable: false),
+                    LocationDescription = table.Column<string>(type: "varchar(max)", maxLength: 200, nullable: false),
+                    LocationShortDescription = table.Column<string>(type: "varchar(max)", maxLength: 50, nullable: false),
+                    ModifiedUserName = table.Column<string>(type: "varchar(150)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Location", x => x.LocationId);
                 });
 
             migrationBuilder.CreateTable(
@@ -85,9 +119,9 @@ namespace Initiatives.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     LastModifiedDate = table.Column<DateTime>(nullable: false),
-                    MetaTagDescription = table.Column<string>(type: "nchar(25)", nullable: false),
-                    MetaTagShortDescription = table.Column<string>(type: "nchar(15)", nullable: false),
-                    ModifiedUserName = table.Column<string>(type: "nchar(150)", nullable: true)
+                    MetaTagDescription = table.Column<string>(type: "varchar(max)", maxLength: 200, nullable: false),
+                    MetaTagShortDescription = table.Column<string>(type: "varchar(max)", maxLength: 50, nullable: false),
+                    ModifiedUserName = table.Column<string>(type: "varchar(150)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -100,11 +134,12 @@ namespace Initiatives.Migrations
                 {
                     ResourceId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    FirstName = table.Column<string>(type: "nchar(15)", nullable: false),
+                    FirstName = table.Column<string>(type: "varchar(max)", maxLength: 50, nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     LastModifiedDate = table.Column<DateTime>(nullable: false),
-                    LastName = table.Column<string>(type: "nchar(15)", nullable: false),
-                    ModifiedUserName = table.Column<string>(type: "nchar(150)", nullable: true)
+                    LastName = table.Column<string>(type: "varchar(max)", maxLength: 50, nullable: false),
+                    ModifiedUserName = table.Column<string>(type: "varchar(150)", nullable: true),
+                    PrincipalUserName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -119,9 +154,9 @@ namespace Initiatives.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     LastModifiedDate = table.Column<DateTime>(nullable: false),
-                    ModifiedUserName = table.Column<string>(type: "nchar(150)", nullable: true),
-                    SolutionTypeDescription = table.Column<string>(type: "nchar(25)", nullable: false),
-                    SolutionTypeShortDescription = table.Column<string>(type: "nchar(15)", nullable: false)
+                    ModifiedUserName = table.Column<string>(type: "varchar(150)", nullable: true),
+                    SolutionTypeDescription = table.Column<string>(type: "varchar(max)", maxLength: 200, nullable: false),
+                    SolutionTypeShortDescription = table.Column<string>(type: "varchar(max)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -136,14 +171,16 @@ namespace Initiatives.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     ARBDate = table.Column<DateTime>(type: "date", nullable: true),
                     CompleteDate = table.Column<DateTime>(type: "date", nullable: true),
-                    DownStreamSystem = table.Column<string>(type: "nchar(25)", nullable: true),
-                    EngagementIdentifier = table.Column<string>(type: "nchar(15)", nullable: true),
-                    EngagementName = table.Column<string>(type: "nchar(15)", nullable: true),
+                    CurrentStatusId = table.Column<int>(nullable: true),
+                    DownStreamSystem = table.Column<string>(type: "varchar(max)", maxLength: 200, nullable: true),
+                    EAInvolvementId = table.Column<int>(nullable: true),
+                    EngagementIdentifier = table.Column<string>(type: "varchar(max)", maxLength: 200, nullable: true),
+                    EngagementName = table.Column<string>(type: "varchar(max)", maxLength: 200, nullable: true),
                     EngagementTypeId = table.Column<int>(nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     LastModifiedDate = table.Column<DateTime>(nullable: false),
                     LocationId = table.Column<int>(nullable: true),
-                    ModifiedUserName = table.Column<string>(type: "nchar(150)", nullable: true),
+                    ModifiedUserName = table.Column<string>(type: "varchar(150)", nullable: true),
                     PCI = table.Column<bool>(type: "bit", nullable: false),
                     PHI = table.Column<bool>(type: "bit", nullable: false),
                     ProjectStartDate = table.Column<DateTime>(type: "date", nullable: true),
@@ -151,11 +188,23 @@ namespace Initiatives.Migrations
                     Resource = table.Column<int>(nullable: true),
                     SolutionTypeId = table.Column<int>(nullable: true),
                     StartDate = table.Column<DateTime>(type: "date", nullable: true),
-                    UpStreamSystem = table.Column<string>(type: "nchar(25)", nullable: true)
+                    UpStreamSystem = table.Column<string>(type: "varchar(max)", maxLength: 200, nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Initiative", x => x.InitiativeId);
+                    table.ForeignKey(
+                        name: "FK_Initiative_CurrentStatus",
+                        column: x => x.CurrentStatusId,
+                        principalTable: "CurrentStatus",
+                        principalColumn: "CurrentStatusId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Initiative_EAInvolvement",
+                        column: x => x.EAInvolvementId,
+                        principalTable: "EAInvolvement",
+                        principalColumn: "EAInvolvementId",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Initiative_EngagementType",
                         column: x => x.EngagementTypeId,
@@ -165,7 +214,7 @@ namespace Initiatives.Migrations
                     table.ForeignKey(
                         name: "FK_Initiative_Location",
                         column: x => x.LocationId,
-                        principalTable: "DeploymentLocation",
+                        principalTable: "Location",
                         principalColumn: "LocationId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -195,7 +244,7 @@ namespace Initiatives.Migrations
                     table.ForeignKey(
                         name: "FK_InitiativeBusiness_Business",
                         column: x => x.BusinessId,
-                        principalTable: "Businesses",
+                        principalTable: "Business",
                         principalColumn: "BusinessId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -264,9 +313,9 @@ namespace Initiatives.Migrations
                     InitiativeId = table.Column<int>(nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     LastModifiedDate = table.Column<DateTime>(nullable: false),
-                    ModifiedUserName = table.Column<string>(type: "nchar(150)", nullable: true),
+                    ModifiedUserName = table.Column<string>(type: "varchar(150)", nullable: true),
                     Note = table.Column<string>(nullable: false),
-                    UserName = table.Column<string>(type: "nchar(150)", nullable: false)
+                    UserName = table.Column<string>(type: "varchar(150)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -278,6 +327,16 @@ namespace Initiatives.Migrations
                         principalColumn: "InitiativeId",
                         onDelete: ReferentialAction.Restrict);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Initiative_CurrentStatusId",
+                table: "Initiative",
+                column: "CurrentStatusId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Initiative_EAInvolvementId",
+                table: "Initiative",
+                column: "EAInvolvementId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Initiative_EngagementTypeId",
@@ -330,7 +389,7 @@ namespace Initiatives.Migrations
                 name: "Note");
 
             migrationBuilder.DropTable(
-                name: "Businesses");
+                name: "Business");
 
             migrationBuilder.DropTable(
                 name: "Facility");
@@ -342,10 +401,16 @@ namespace Initiatives.Migrations
                 name: "Initiative");
 
             migrationBuilder.DropTable(
+                name: "CurrentStatus");
+
+            migrationBuilder.DropTable(
+                name: "EAInvolvement");
+
+            migrationBuilder.DropTable(
                 name: "EngagementType");
 
             migrationBuilder.DropTable(
-                name: "DeploymentLocation");
+                name: "Location");
 
             migrationBuilder.DropTable(
                 name: "Resource");
