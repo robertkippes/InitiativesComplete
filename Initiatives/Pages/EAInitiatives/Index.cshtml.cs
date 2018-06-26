@@ -86,7 +86,7 @@ namespace Initiatives.Pages.EAInitiatives
                 .Include(i => i.CurrentStatusNavigation)
                 .AsNoTracking();
 
-            int pageSize = 3;
+            int pageSize = 10;
 
             Initiative = await PaginatedList<Initiative>.CreateAsync(initiativeIq, pageIndex ?? 1, pageSize);
 
