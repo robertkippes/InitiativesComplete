@@ -42,7 +42,9 @@
                 @Html.DisplayNameFor(model => model.Initiative[0].EngagementIdentifier)
             </th>
             <th title="The Current Status of the Initiaitive">
-                @Html.DisplayNameFor(model => model.Initiative[0].CurrentStatusNavigation)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort">
+                    @Html.DisplayNameFor(model => model.Initiative[0].CurrentStatusNavigation)
+                    </a>
             </th>
             <th title="The Date Initiaitive was Communucated to the EA Team">
                 @Html.DisplayNameFor(model => model.Initiative[0].ReceiveDate)

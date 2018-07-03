@@ -59,7 +59,7 @@ namespace Initiatives.Models
                 .Where(e => e.State != EntityState.Unchanged &&
                             e.Metadata.GetProperties().Any(x => x.Name == "ModifiedUserName") && e.Metadata.GetProperties().Any(x => x.Name == "LastModifiedDate")))
             {
-                item.CurrentValues["ModifiedUserName"] = WindowsIdentity.GetCurrent().Name;
+                //item.CurrentValues["ModifiedUserName"] = WindowsIdentity.GetCurrent().Name;
                 item.CurrentValues["LastModifiedDate"] = DateTime.Now;
             }
             //Set new items to active
@@ -320,7 +320,7 @@ namespace Initiatives.Models
 
                 entity.HasOne(d => d.InitiativeNavigation)
                     .WithMany(p => p.Note)
-                    .HasForeignKey(d => d.NoteId)
+                    .HasForeignKey(d => d.InitiativeId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Note_Initiative");
 

@@ -22,6 +22,7 @@ namespace Initiatives.Pages.EAInitiatives
 
         public string NameSort { get; set; }
         public string DateSort { get; set; }
+        public string StatusSort { get; set; }
         public string CurrentSort { get; set; }
         public string CurrentFilter { get; set; }
         public bool IncludeDeleted { get; set; }
@@ -34,6 +35,7 @@ namespace Initiatives.Pages.EAInitiatives
             CurrentSort = sortOrder;
             NameSort = sortOrder == "Name" ? "name_desc" : "Name";
             DateSort = sortOrder == "Date" ? "date_desc" : "Date";
+            StatusSort = sortOrder == "Status" ? "status_desc" : "Status";
 
             if (searchString != null)
             {
@@ -72,6 +74,12 @@ namespace Initiatives.Pages.EAInitiatives
                     break;
                 case "date_desc":
                     initiativeIq = initiativeIq.OrderByDescending(s => s.StartDate);
+                    break;
+                case "Status":
+                    initiativeIq = initiativeIq.OrderBy(s => s.CurrentStatusNavigation.CurrentStatusDescription);
+                    break;
+                case "status_desc":
+                    initiativeIq = initiativeIq.OrderBy(s => s.CurrentStatusNavigation.CurrentStatusDescription);
                     break;
                 default:
                     initiativeIq = initiativeIq.OrderBy(s => s.ReceiveDate);
