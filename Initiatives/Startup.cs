@@ -24,7 +24,7 @@ namespace Initiatives
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<InitiativeContext>(options =>
-                options.UseSqlServer("Data Source=IZASM349;Initial Catalog=Initiatives;User Id=initiative; Password=Ea.june2018"));
+                options.UseSqlServer("Data Source=IZASM348;Initial Catalog=Initiatives;User Id=initiative; Password=Ea.june2018"));
             services.AddMvc();
         }
 

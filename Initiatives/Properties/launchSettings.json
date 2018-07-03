@@ -3,7 +3,7 @@
     "windowsAuthentication": true,
     "anonymousAuthentication": false,
     "iis": {
-      "applicationUrl": "http://IZASM349/Initiatives",
+      "applicationUrl": "http://IZASM348/Initiatives",
       "sslPort": 0
     },
     "iisExpress": {
