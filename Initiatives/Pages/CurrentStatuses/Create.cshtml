@@ -14,6 +14,7 @@
             <form method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
+                    <input type="hidden" asp-for="CurrentStatus.ModifiedUserName" value="@this.User.Identity.Name" />
                     <label asp-for="CurrentStatus.CurrentStatusShortDescription" class="control-label"></label>
                     <input asp-for="CurrentStatus.CurrentStatusShortDescription" class="form-control" />
                     <span asp-validation-for="CurrentStatus.CurrentStatusShortDescription" class="text-danger"></span>

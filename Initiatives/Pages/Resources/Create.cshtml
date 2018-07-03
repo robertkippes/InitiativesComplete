@@ -14,6 +14,7 @@
         <div class="well well-sm">
             <form method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Resource.ModifiedUserName" value="@this.User.Identity.Name" />
                 <div class="form-group">
                     <label asp-for="Resource.FirstName" class="control-label"></label>
                     <input asp-for="Resource.FirstName" class="form-control" />

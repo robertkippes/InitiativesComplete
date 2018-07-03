@@ -13,6 +13,7 @@
         <div class="well well-sm">
             <form method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="CurrentStatus.ModifiedUserName" value="@this.User.Identity.Name" />
                 <input type="hidden" asp-for="CurrentStatus.CurrentStatusId" />
                 <input type="hidden" asp-for="CurrentStatus.IsActive" />
                 <div class="form-group">

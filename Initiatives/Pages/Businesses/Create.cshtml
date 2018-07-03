@@ -13,6 +13,7 @@
     <div class="col-md-4 col-md-push-4">
     <div class="well well-sm">
         <form method="post">
+            <input type="hidden" asp-for="Business.ModifiedUserName" value="@this.User.Identity.Name" />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Business.BusinessShortDescription" class="control-label"></label>

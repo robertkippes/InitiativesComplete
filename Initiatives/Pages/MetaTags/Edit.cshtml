@@ -14,6 +14,7 @@
         <div class="well well-sm">
             <form method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="MetaTag.ModifiedUserName" value="@this.User.Identity.Name" />
                 <input type="hidden" asp-for="MetaTag.MetaTagId" />
                 <input type="hidden" asp-for="MetaTag.IsActive" />
                 <div class="form-group">

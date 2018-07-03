@@ -15,6 +15,7 @@
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <input type="hidden" asp-for="EAInvolvement.EAInvolvementId" />
                 <input type="hidden" asp-for="EAInvolvement.IsActive" />
+                <input type="hidden" asp-for="EAInvolvement.ModifiedUserName" value="@this.User.Identity.Name" />
                 <div class="form-group">
                     <label asp-for="EAInvolvement.EAInvolvementShortDescription" class="control-label"></label>
                     <input asp-for="EAInvolvement.EAInvolvementShortDescription" class="form-control" />

@@ -41,8 +41,10 @@
         </dt>
         <dd>
             <form method="post">
+                <input type="hidden" asp-for="SolutionType.ModifiedUserName" value="@this.User.Identity.Name" />
+                <input type="hidden" asp-for="SolutionType.ModifiedUserName" value="@this.User.Identity.Name" />
                 <input type="hidden" asp-for="SolutionType.SolutionTypeId" />
-                <input type="submit" value="Delete" class="btn btn-default btn-xs" />                
+                <input type="submit" value="Delete" class="btn btn-default btn-xs" />
             </form>
         </dd>
     </dl>

@@ -42,6 +42,7 @@
         <dd>
             <form method="post">
                 <input type="hidden" asp-for="Business.BusinessId" />
+                <input type="hidden" asp-for="Business.ModifiedUserName" value="@this.User.Identity.Name" />
                 <input type="submit" value="Delete" class="btn-default btn-xs" />
             </form>
         </dd>
