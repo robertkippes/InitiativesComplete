@@ -14,6 +14,7 @@ namespace Initiatives.Models
 
         [Key]
         public int InitiativeId { get; set; }
+        [Required]
         [Display(Name = "Name")]
         [DataType(DataType.Text)]
         [StringLength(200, MinimumLength = 3)]
@@ -21,8 +22,10 @@ namespace Initiatives.Models
         [StringLength(200, MinimumLength = 3)]
         [Display(Name = "Identifier")]
         public string EngagementIdentifier { get; set; }
+        [Required]
         [Display(Name = "Engagement")]
         public int? EngagementTypeId { get; set; }
+        [Required]
         [Display(Name = "CurrentStatus")]
         public int? CurrentStatusId { get; set; }
         [Display(Name = "EA Involvement")]
@@ -48,6 +51,7 @@ namespace Initiatives.Models
         [DataType(DataType.Date)]
         public DateTime? ARBDate { get; set; }
         public int? Resource { get; set; }
+        [Required]
         [Display(Name = "Received")]
         [DataType(DataType.Date)]
         public DateTime? ReceiveDate { get; set; }
